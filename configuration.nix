@@ -139,6 +139,15 @@
   nix.settings.experimental-features = [ "nix-command" "flakes"];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+	
+  # Perform garbage collection weekly to maintain low disk usage
+  nix.gc = {
+	  automatic = true;
+	  dates = "weekly";
+	  options = "--delete-older-than 1w";
+  };
+  nix.settings.auto-optimise-store = true;
+
   environment.systemPackages = with pkgs; [
   	# git must be instleed for flakes
   	git

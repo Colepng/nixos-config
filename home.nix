@@ -11,10 +11,11 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-	xournalpp
-	neofetch
-	ripgrep
-	btop
+    xournalpp
+    neofetch
+    ripgrep
+    btop
+    nixfmt-rfc-style
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -38,14 +39,24 @@
     userName = "Cole Kauder-McMurrich";
     userEmail = "gamingwithcole7@gmail.com";
   };
-  
+
   programs.firefox.enable = true;
-  
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+  };
+
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+      vscodevim.vim
+      yzhang.markdown-all-in-one
+      jnoortheen.nix-ide
+    ];
   };
 }

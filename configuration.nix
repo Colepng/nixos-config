@@ -5,51 +5,52 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-	
-
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./system-configuration
+  ];
 
   boot = {
-  	loader = {
-  	  	# Bootloader.
-  		grub = {
-  			enable = true;
-  			device = "/dev/sda";
-  			useOSProber = false;
-  		};
-  	};
-  	# Use latest kernel.
-  	kernelPackages = pkgs.linuxPackages_latest;
-  	initrd.checkJournalingFS = false;
-	plymouth = {
-      		enable = true;
-      		theme = "rings";
-      		themePackages = with pkgs; [
-        		# By default we would install all themes
-        		(adi1090x-plymouth-themes.override {
-          		selected_themes = [ "rings" "colorful" ];
-        		})
-      		];
-    	};
-    	
-    	
-    	# Enable "Silent boot"
-    	consoleLogLevel = 3;
-    	initrd.verbose = false;
-    	kernelParams = [
-    	  "quiet"
-    	  "splash"
-	  "boot.shell_on_fail"
- 	  "udev.log_priority=3"
-    	  "rd.systemd.show_status=auto"
-   	 ];
-   	# Hide the OS choice for bootloaders.
-   	# It's still possible to open the bootloader list by pressing any key
-   	# It will just not appear on screen unless a key is pressed
-    	loader.timeout = 0;
+    loader = {
+      # Bootloader.
+      grub = {
+        enable = true;
+        device = "/dev/sda";
+        useOSProber = false;
+      };
+    };
+    # Use latest kernel.
+    kernelPackages = pkgs.linuxPackages_latest;
+    initrd.checkJournalingFS = false;
+    plymouth = {
+      enable = true;
+      theme = "rings";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [
+            "rings"
+            "colorful"
+          ];
+        })
+      ];
+    };
+
+    # Enable "Silent boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+    ];
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader.timeout = 0;
   };
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -67,13 +68,6 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -100,59 +94,53 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cole = {
     isNormalUser = true;
     description = "Cole Kauder-McMurrich";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   users.defaultUserShell = pkgs.zsh;
 
-  # Enable automatic login for the user.
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "cole";
-
-  # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
-
-  
   programs.zsh.enable = true;
-    
+
   programs.steam = {
     enable = false;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-};
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-	
+
   # Perform garbage collection weekly to maintain low disk usage
   nix.gc = {
-	  automatic = true;
-	  dates = "weekly";
-	  options = "--delete-older-than 1w";
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
   };
   nix.settings.auto-optimise-store = true;
 
   environment.systemPackages = with pkgs; [
-  	# git must be instleed for flakes
-  	git
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    # git must be instleed for flakes
+    git
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

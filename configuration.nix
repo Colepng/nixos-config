@@ -14,15 +14,15 @@
   boot = {
     loader = {
       # Bootloader.
+      systemd-boot.enable = true;
       grub = {
-        enable = true;
-        device = "/dev/sda";
+        enable = false;
+        device = "/dev/disk/by-uuid/1752-CDF9";
         useOSProber = false;
       };
     };
     # Use latest kernel.
     kernelPackages = pkgs.linuxPackages_latest;
-    initrd.checkJournalingFS = false;
     plymouth = {
       enable = true;
       theme = "rings";
@@ -50,7 +50,7 @@
     # Hide the OS choice for bootloaders.
     # It's still possible to open the bootloader list by pressing any key
     # It will just not appear on screen unless a key is pressed
-    loader.timeout = 1;
+    loader.timeout = 0;
   };
 
   networking.hostName = "nixos"; # Define your hostname.

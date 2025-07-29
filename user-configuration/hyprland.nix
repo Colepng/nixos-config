@@ -9,6 +9,8 @@
     waybar
     playerctl
     brightnessctl
+    iio-hyprland
+    jq #needed by iio-hyprland
   ];
 
   services.mako.enable = true;
@@ -23,10 +25,11 @@
     portalPackage = null;
     enable = true;
     settings = {
-      monitor = ",preferred,auto,1.5";
+      monitor = "eDP-1,preferred,auto,1.25";
 
       exec-once = [
 	"swww restore"
+	"iio-hyprland --left-master"
       ];
 
       general = {

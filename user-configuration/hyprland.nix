@@ -126,8 +126,7 @@
 	",XF86AudioPrev, exec, playerctl previous"
       ];
 
-      bind =
-        [
+      bind = [
 	  # Hyprland interaction
 	  "$mainMod, Q, killactive"
 	  "$mainMod, F, togglefloating"
@@ -136,6 +135,18 @@
 	  "$mainMod SHIFT, P, pin"
 	  "$mainMod, J, togglesplit"
 	  "$mainMod, X, togglespecialworkspace"
+
+	  # Window movment
+	  # Move focus with mainMod + arrow keys, 
+	  "$mainMod, A, movefocus, l"
+	  "$mainMod, D, movefocus, r"
+	  "$mainMod, W, movefocus, u"
+	  "$mainMod, S, movefocus, d"
+
+	  "$altMod, A, swapwindow, l"
+	  "$altMod, D, swapwindow, r"
+	  "$altMod, W, swapwindow, u"
+	  "$altMod, S, swapwindow, d"
 	  
 	  # Apps
 	  "$mainMod, Space, exec, fuzzel"
@@ -155,6 +166,11 @@
             )
             9)
         );
+
+      bindm = [
+      	"$mainMod, mouse:272, movewindow"
+      	"$mainMod, mouse:273, resizewindow"
+      ];
     };
   };
 }

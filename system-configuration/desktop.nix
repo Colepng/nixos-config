@@ -6,6 +6,7 @@
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.defaultSession = "hyprland";
   programs.hyprland.enable = true;
 
   environment.systemPackages = [ pkgs.kitty ];

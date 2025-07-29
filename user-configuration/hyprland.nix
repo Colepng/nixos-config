@@ -19,7 +19,6 @@
     package = null;
     portalPackage = null;
     enable = true;
-    systemd.variables = [ "--all" ];
     settings = {
       monitor = ",preferred,auto,1.5";
 
@@ -132,7 +131,4 @@
         );
     };
   };
-
-  # Set env for electron apps to use wayland
-  home.sessionVariables.NIXOS_OZONE_WL = "1";
 }

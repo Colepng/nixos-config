@@ -9,10 +9,12 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs =
-    input@{ nixpkgs, home-manager, ... }:
+    input@{ nixpkgs, home-manager, nixos-hardware, ... }:
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
@@ -27,6 +29,8 @@
 
               home-manager.users.cole = import ./home.nix;
             }
+
+            nixos-hardware.nixosModules.framework-12-13th-gen-intel
           ];
         };
       };

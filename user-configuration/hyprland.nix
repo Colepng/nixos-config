@@ -12,6 +12,7 @@
   ];
 
   services.mako.enable = true;
+  services.swww.enable = true;
 
   # needed for termainl inside hyprland
   programs.kitty.enable = true;
@@ -23,6 +24,10 @@
     enable = true;
     settings = {
       monitor = ",preferred,auto,1.5";
+
+      exec-once = [
+	"swww restore"
+      ];
 
       general = {
         resize_on_border = true;

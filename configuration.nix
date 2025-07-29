@@ -25,13 +25,14 @@
     kernelPackages = pkgs.linuxPackages_latest;
     plymouth = {
       enable = true;
-      theme = "rings";
+      theme = "lone";
       themePackages = with pkgs; [
         # By default we would install all themes
         (adi1090x-plymouth-themes.override {
           selected_themes = [
             "rings"
             "colorful"
+            "lone"
           ];
         })
       ];
@@ -134,6 +135,7 @@
     dates = "weekly";
     options = "--delete-older-than 1w";
   };
+
   nix.settings.auto-optimise-store = true;
 
   environment.systemPackages = with pkgs; [

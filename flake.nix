@@ -11,14 +11,19 @@
     };
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs =
-    input@{ nixpkgs, home-manager, nixos-hardware, ... }:
+  outputs = input@{ nixpkgs, home-manager, nixos-hardware, rust-overlay, ... }:
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit rust-overlay; };
           modules = [
             ./configuration.nix
 

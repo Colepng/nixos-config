@@ -16,6 +16,7 @@
     ripgrep
     btop
     nixfmt-rfc-style
+    krita
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

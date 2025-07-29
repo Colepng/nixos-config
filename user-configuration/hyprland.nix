@@ -32,6 +32,8 @@
 	"iio-hyprland --left-master"
       ];
 
+      xwayland.force_zero_scaling = true;
+
       general = {
         resize_on_border = true;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";

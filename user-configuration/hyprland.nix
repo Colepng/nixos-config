@@ -26,6 +26,7 @@
       "100000"
     ];
   };
+  services.udiskie.enable = true;
 
   # needed for termainl inside hyprland
   programs.kitty.enable = true;

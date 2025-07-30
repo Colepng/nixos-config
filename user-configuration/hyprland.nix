@@ -11,6 +11,7 @@
     brightnessctl
     iio-hyprland
     jq # needed by iio-hyprland
+    nwg-drawer
     hyprshot
   ];
 
@@ -110,6 +111,7 @@
 
       gestures = {
         workspace_swipe = true;
+        workspace_swipe_cancel_ratio = 0.15;
       };
 
       windowrule = [

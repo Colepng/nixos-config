@@ -18,7 +18,14 @@
     };
   };
 
-  outputs = input@{ nixpkgs, home-manager, nixos-hardware, rust-overlay, ... }:
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      nixos-hardware,
+      rust-overlay,
+      ...
+    }:
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {

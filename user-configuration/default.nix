@@ -1,6 +1,6 @@
 {
   imports = [
     ./hyprland.nix
-		./fonts.nix
+    ./fonts.nix
   ];
 }

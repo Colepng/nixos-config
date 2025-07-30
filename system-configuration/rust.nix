@@ -1,5 +1,5 @@
 # Nix os module that contains all configuartion rust toolings
-{ config, pkgs, rust-overlay, ... }:
+{ pkgs, rust-overlay, ... }:
 
 {
   nixpkgs.overlays = [ rust-overlay.overlays.default ];
@@ -7,7 +7,11 @@
     (rust-bin.selectLatestNightlyWith (
       toolchain:
       toolchain.default.override {
-        extensions = [ "miri" "rust-src" "llvm-tools-preview"];
+        extensions = [
+          "miri"
+          "rust-src"
+          "llvm-tools-preview"
+        ];
         targets = [ "x86_64-unknown-none" ];
       }
     ))

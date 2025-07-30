@@ -1,8 +1,8 @@
 # Nix module for managing fonts
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
-	fonts.fontconfig.enable = true;
+  fonts.fontconfig.enable = true;
 
-	home.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  home.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 }

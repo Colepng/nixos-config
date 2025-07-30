@@ -13,10 +13,19 @@
     jq # needed by iio-hyprland
     nwg-drawer
     hyprshot
+    wl-clipboard
+    imagemagick
   ];
 
   services.mako.enable = true;
   services.swww.enable = true;
+  services.cliphist = {
+    enable = true;
+    extraOptions = [
+      "--max items"
+      "100000"
+    ];
+  };
 
   # needed for termainl inside hyprland
   programs.kitty.enable = true;
@@ -39,6 +48,7 @@
         "iio-hyprland --left-master"
         "waybar"
         "nm-applet"
+        "wl-paste --watch cliphist store"
       ];
 
       xwayland.force_zero_scaling = true;
@@ -235,9 +245,11 @@
         "$altMod, M, exec, firefox --new-tab \"https://app.fastmail.com/mail/Inbox\""
 
         # Utils
-        "$mainMod, P, exec, hyprshot -r -z -m region > ~/Pictures/screenshots/screenshot-\"$(date +%F-%X)\".png"
-        "$altMainMod, P, exec, hyprshot -r -z -m output > ~/Pictures/screenshots/screenshot-\"$(date +%F-%X)\".png"
-        "$altMod, P, exec, hyprshot -r -z -m window > ~/Pictures/screenshots/screenshot-\"$(date +%F-%X)\".png"
+        "$mainMod, P, exec, hyprshot -z -o ~/Pictures/screenshots -f screenshot-\"$(date +%F-%X)\".png -m region"
+        "$altMainMod, P, exec, hyprshot -z -o ~/Pictures/screenshots -f screenshot-\"$(date +%F-%X)\".png -m window"
+        "$altMod, P, exec, -m window > ~/Pictures/screenshots/screenshot-\"$(date +%F-%X)\".png -m output"
+
+        "$mainMod, V, exec, ~/Documents/Temp/cliphist-fuzzel-img"
       ]
       ++ (
         # workspaces

@@ -25,7 +25,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
     plymouth = {
       enable = true;
-      theme = "lone";
+      theme = "cuts";
       themePackages = with pkgs; [
         # By default we would install all themes
         (adi1090x-plymouth-themes.override {
@@ -33,6 +33,8 @@
             "rings"
             "colorful"
             "lone"
+            "square"
+            "cuts"
           ];
         })
       ];

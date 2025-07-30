@@ -33,7 +33,6 @@
           specialArgs = { inherit rust-overlay; };
           modules = [
             ./configuration.nix
-
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

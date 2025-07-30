@@ -24,12 +24,19 @@
     package = null;
     portalPackage = null;
     enable = true;
+
+    plugins = [
+      pkgs.hyprlandPlugins.hyprgrass
+    ];
+
     settings = {
       monitor = "eDP-1,preferred,auto,1.25";
 
       exec-once = [
         "swww restore"
         "iio-hyprland --left-master"
+        "waybar"
+        "nm-applet"
       ];
 
       xwayland.force_zero_scaling = true;
@@ -201,7 +208,7 @@
         "$mainMod, Q, killactive"
         "$mainMod, F, togglefloating"
         "$mainMod, M, fullscreen"
-        "$AltMainMod, M, fullscreen, 1"
+        "$altMainMod, M, fullscreen, 1"
         "$mainMod SHIFT, P, pin"
         "$mainMod, J, togglesplit"
         "$mainMod, X, togglespecialworkspace"

@@ -25,6 +25,8 @@
     discord
     kdePackages.filelight
     networkmanagerapplet
+    helvum
+    pwvucontrol
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

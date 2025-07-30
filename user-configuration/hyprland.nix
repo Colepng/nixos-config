@@ -11,6 +11,7 @@
     brightnessctl
     iio-hyprland
     jq # needed by iio-hyprland
+    hyprshot
   ];
 
   services.mako.enable = true;
@@ -230,6 +231,11 @@
         "$mainMod, Return, exec, foot"
         "$altMod, C, exec, firefox --new-tab \"https://app.fastmail.com/calendar/week/\""
         "$altMod, M, exec, firefox --new-tab \"https://app.fastmail.com/mail/Inbox\""
+
+        # Utils
+        "$mainMod, P, exec, hyprshot -r -z -m region > ~/Pictures/screenshots/screenshot-\"$(date +%F-%X)\".png"
+        "$altMainMod, P, exec, hyprshot -r -z -m output > ~/Pictures/screenshots/screenshot-\"$(date +%F-%X)\".png"
+        "$altMod, P, exec, hyprshot -r -z -m window > ~/Pictures/screenshots/screenshot-\"$(date +%F-%X)\".png"
       ]
       ++ (
         # workspaces

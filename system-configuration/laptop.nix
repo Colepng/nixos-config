@@ -29,4 +29,6 @@
       CPU_BOOST_ON_BAT = 0;
     };
   };
+
+  services.upower.enable = true;
 }

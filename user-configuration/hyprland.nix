@@ -17,7 +17,29 @@
     imagemagick
   ];
 
-  services.mako.enable = true;
+  services.mako = {
+    enable = true;
+    settings = {
+      "actionable=true" = {
+        anchor = "top-left";
+      };
+      actions = true;
+      anchor = "top-right";
+      background-color = "#000000";
+      border-color = "#FFFFFF";
+      border-radius = 5;
+      default-timeout = 3000;
+      font = "monospace 12";
+      height = 100;
+      icons = true;
+      ignore-timeout = false;
+      layer = "top";
+      margin = 10;
+      markup = true;
+      width = 300;
+    };
+  };
+
   services.swww.enable = true;
   services.cliphist = {
     enable = true;

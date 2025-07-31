@@ -8,7 +8,10 @@
   services.displayManager.defaultSession = "hyprland";
   programs.hyprland.enable = true;
 
-  environment.systemPackages = [ pkgs.kitty ];
+  environment.systemPackages = [
+    pkgs.kitty
+    pkgs.kdePackages.qtwayland
+  ];
 
   # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;

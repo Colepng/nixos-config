@@ -71,4 +71,8 @@
       jnoortheen.nix-ide
     ];
   };
+
+  services = {
+    poweralertd.enable = true;
+  };
 }

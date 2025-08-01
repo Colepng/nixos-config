@@ -15,6 +15,8 @@
     hyprshot
     wl-clipboard
     imagemagick
+    syshud
+    squeekboard
   ];
 
   services.mako = {
@@ -72,6 +74,8 @@
         "waybar"
         "nm-applet"
         "wl-paste --watch cliphist store"
+        "squeekboard"
+        "syshud"
       ];
 
       xwayland.force_zero_scaling = true;
@@ -199,7 +203,7 @@
           " , edge:l:r, workspace, m-1"
 
           # swipe up from bottom edge
-          ", edge:d:u, exec, firefox"
+          ", edge:d:u, exec, busctl call --user sm.puri.OSK0 /sm/puri/OSK0 sm.puri.OSK0 SetVisible b true"
 
           ", edge:u:d, exec, nwg-drawer"
 
@@ -376,6 +380,14 @@
           on-timeout = "systemctl suspend";
         }
       ];
+    };
+  };
+
+  dconf.settings = {
+    "sm/puri/OSK0" = {
+      layout-shape-changes-to-fit-panel = false;
+      scale-in-horizontal-screen-orientation = 10.0;
+      scale-in-vertical-screen-orientation = 10.0;
     };
   };
 }

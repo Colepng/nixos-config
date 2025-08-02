@@ -27,11 +27,11 @@
       };
       actions = true;
       anchor = "top-right";
-      background-color = "#000000";
-      border-color = "#FFFFFF";
+      # background-color = "#000000";
+      # border-color = "#FFFFFF";
       border-radius = 5;
       default-timeout = 3000;
-      font = "monospace 12";
+      # font = "monospace 12";
       height = 100;
       icons = true;
       ignore-timeout = false;
@@ -82,8 +82,8 @@
 
       general = {
         resize_on_border = true;
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        # "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        # "col.inactive_border" = "rgba(595959aa)";
       };
 
       decoration = {
@@ -94,7 +94,7 @@
           enabled = true;
           range = 4;
           render_power = 3;
-          color = "rgba(1a1a1aee)";
+          # color = "rgba(1a1a1aee)";
         };
 
         blur = {
@@ -322,29 +322,29 @@
         };
       };
 
-      background = [
-        {
-          path = "screenshot";
-          blur_passes = 3;
-          blur_size = 8;
-        }
-      ];
+      # background = [
+      #   {
+      #     path = "screenshot";
+      #     blur_passes = 3;
+      #     blur_size = 8;
+      #   }
+      # ];
 
-      input-field = [
-        {
-          size = "200, 50";
-          position = "0, -80";
-          monitor = "";
-          dots_center = true;
-          fade_on_empty = false;
-          font_color = "rgb(202, 211, 245)";
-          inner_color = "rgb(91, 96, 120)";
-          outer_color = "rgb(24, 25, 38)";
-          outline_thickness = 5;
-          placeholder_text = "<span foreground=\"##cad3f5\">Password...</span>";
-          shadow_passes = 2;
-        }
-      ];
+      # input-field = [
+      #   {
+      #     size = "200, 50";
+      #     position = "0, -80";
+      #     monitor = "";
+      #     dots_center = true;
+      #     fade_on_empty = false;
+      #     # font_color = "rgb(202, 211, 245)";
+      #     # inner_color = "rgb(91, 96, 120)";
+      #     # outer_color = "rgb(24, 25, 38)";
+      #     outline_thickness = 5;
+      #     placeholder_text = "<span foreground=\"##cad3f5\">Password...</span>";
+      #     shadow_passes = 2;
+      #   }
+      # ];
     };
   };
 

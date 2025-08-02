@@ -16,24 +16,38 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
   outputs =
-    {
+    inputs@{
       nixpkgs,
       home-manager,
       nixos-hardware,
       rust-overlay,
+      stylix,
+      spicetify-nix,
       ...
     }:
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit rust-overlay; };
+          specialArgs = {
+            inherit rust-overlay;
+            inherit inputs;
+          };
           modules = [
             ./configuration.nix
+            stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
+            spicetify-nix.nixosModules.spicetify
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

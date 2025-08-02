@@ -21,7 +21,6 @@
     btop
     nixfmt-rfc-style
     krita
-    spotify
     discord
     kdePackages.filelight
     networkmanagerapplet
@@ -40,40 +39,47 @@
     # EDITOR = "neovim";
   };
 
+
+  programs = {
+    git = {
+      enable = true;
+      userName = "Cole Kauder-McMurrich";
+      userEmail = "gamingwithcole7@gmail.com";
+    };
+    firefox.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+    };
+    vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        dracula-theme.theme-dracula
+        vscodevim.vim
+        yzhang.markdown-all-in-one
+        jnoortheen.nix-ide
+      ];
+    };
+    fish = {
+      enable = true;
+      interactiveShellInit = ''
+        set fish_greeting # Disable greeting
+      '';
+    };
+  };
+
   services = {
+    poweralertd.enable = true;
     syncthing = {
       enable = true;
       tray.enable = true;
     };
   };
 
-  programs.git = {
-    enable = true;
-    userName = "Cole Kauder-McMurrich";
-    userEmail = "gamingwithcole7@gmail.com";
-  };
-
-  programs.firefox.enable = true;
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-  };
-
-  programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
-      dracula-theme.theme-dracula
-      vscodevim.vim
-      yzhang.markdown-all-in-one
-      jnoortheen.nix-ide
-    ];
-  };
-
-  services = {
-    poweralertd.enable = true;
+  stylix.targets = {
+    neovim.enable = false;
   };
 }

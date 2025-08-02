@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -25,7 +30,7 @@
     kernelPackages = pkgs.linuxPackages_latest;
     plymouth = {
       enable = true;
-      theme = "cuts";
+      # theme = "cuts";
       themePackages = with pkgs; [
         # By default we would install all themes
         (adi1090x-plymouth-themes.override {
@@ -111,6 +116,32 @@
 
   users.defaultUserShell = pkgs.fish;
 
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/irblack.yaml";
+    fonts = {
+      serif = {
+        package = pkgs.dejavu_fonts;
+        name = "Inter Serif";
+      };
+
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "Inter Sans";
+      };
+
+      monospace = {
+        package = pkgs.dejavu_fonts;
+        name = "Inter Sans Mono";
+      };
+
+      emoji = {
+        package = pkgs.noto-fonts-emoji;
+        name = "Noto Color Emoji";
+      };
+    };
+  };
+
   programs.fish.enable = true;
 
   programs.steam = {
@@ -118,6 +149,16 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
+  programs.spicetify = {
+    enable = true;
+    enabledExtensions = with inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system}.extensions; [
+      allOfArtist
+      wikify
+      skipStats
+      fullScreen
+    ];
   };
 
   # Allow unfree packages

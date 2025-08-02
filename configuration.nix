@@ -109,9 +109,9 @@
     ];
   };
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.fish;
 
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   programs.steam = {
     enable = true;

@@ -23,6 +23,7 @@
     };
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
+    caelestia-shell.url = "github:caelestia-dots/shell";
   };
 
   outputs =
@@ -33,6 +34,7 @@
       rust-overlay,
       stylix,
       spicetify-nix,
+      caelestia-shell,
       ...
     }:
     {
@@ -51,6 +53,9 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit caelestia-shell;
+              };
 
               home-manager.users.cole = import ./home.nix;
             }

@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  caelestia-shell,
+  ...
+}:
 
 {
   imports = [

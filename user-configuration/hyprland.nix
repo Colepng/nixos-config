@@ -107,7 +107,7 @@
       };
 
       animations = {
-        enabled = true;
+        enabled = false;
 
         workspace_wraparound = true;
 

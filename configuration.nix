@@ -103,6 +103,8 @@
   };
 
   services.udisks2.enable = true;
+  services.fwupd.enable = true;
+  services.fwupd.uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cole = {
@@ -185,25 +187,6 @@
     git
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
-  ];
-
-  # Ensure that the `pinctrl_tigerlake` kernel module is loaded before `soc_button_array`.
-  # This is required for correcly switching to tablet mode when the display is folded back.
-  boot.extraModprobeConfig = ''
-    softdep soc_button_array pre: pinctrl_tigerlake
-  '';
-
-  # Patch the `udev` rules shipping with `iio-sensor-proxy` according to:
-  # https://github.com/FrameworkComputer/linux-docs/blob/main/framework12/Ubuntu-25-04-accel-ubuntu25.04.md
-  nixpkgs.overlays = [
-    (final: prev: {
-      iio-sensor-proxy = prev.iio-sensor-proxy.overrideAttrs (old: {
-        postInstall = ''
-          ${old.postInstall or ""}
-          sed -i 's/.*iio-buffer-accel/#&/' $out/lib/udev/rules.d/80-iio-sensor-proxy.rules
-        '';
-      });
-    })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

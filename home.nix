@@ -34,6 +34,8 @@
     pcmanfm
     texlive.combined.scheme-medium
     gitkraken
+    nil
+    kdePackages.qtdeclarative
   ];
 
   programs = {

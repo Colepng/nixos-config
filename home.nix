@@ -37,6 +37,11 @@
   ];
 
   programs = {
+    direnv = {
+      enable = true;
+      # enableFishIntegration = true;
+      nix-direnv.enable = true;
+    };
     git = {
       enable = true;
       userName = "Cole Kauder-McMurrich";

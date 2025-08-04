@@ -121,20 +121,30 @@
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/irblack.yaml";
+    polarity = "dark";
+    cursor = {
+      name = "Quintom_Ink";
+      package = pkgs.quintom-cursor-theme;
+      size = 24;
+    };
     fonts = {
+      sizes = {
+        applications = 12;
+        popups = 16;
+      };
       serif = {
-        package = pkgs.dejavu_fonts;
-        name = "Inter Serif";
+        package = pkgs.inter;
+        name = "Inter";
       };
 
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "Inter Sans";
+        package = pkgs.inter;
+        name = "Inter";
       };
 
       monospace = {
-        package = pkgs.dejavu_fonts;
-        name = "Inter Sans Mono";
+        package = pkgs.nerd-fonts.meslo-lg;
+        name = "MesloLGS Nerd Font";
       };
 
       emoji = {

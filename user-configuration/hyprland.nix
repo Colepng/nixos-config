@@ -4,7 +4,6 @@
 {
   # Pkgs used by hyprland or my hyprland config
   home.packages = with pkgs; [
-    fuzzel
     foot
     waybar
     playerctl
@@ -54,6 +53,18 @@
 
   # needed for termainl inside hyprland
   programs.kitty.enable = true;
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      main = {
+        termainl = "${pkgs.foot}/bin/foot";
+        layer = "overlay";
+        inner-pad = 15;
+        fields = "filename,name";
+        width = 15;
+      };
+    };
+  };
 
   wayland.windowManager.hyprland = {
     # set the Hyprland and XDPH packages to null to use the ones from the NixOS module

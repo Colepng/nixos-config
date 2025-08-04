@@ -82,7 +82,7 @@
       exec-once = [
         "swww restore"
         "iio-hyprland --left-master"
-        "waybar"
+        "caelestia-shell"
         "nm-applet"
         "wl-paste --watch cliphist store"
         "squeekboard"

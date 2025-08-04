@@ -11,6 +11,7 @@
           "miri"
           "rust-src"
           "llvm-tools-preview"
+          "rust-analyzer"
         ];
         targets = [ "x86_64-unknown-none" ];
       }

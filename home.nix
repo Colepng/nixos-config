@@ -36,6 +36,8 @@
     gitkraken
     nil
     kdePackages.qtdeclarative
+    mpv
+    vlc
   ];
 
   programs = {

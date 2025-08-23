@@ -38,4 +38,19 @@
     lidSwitch = "suspend-then-hibernate";
   };
 
+  hardware = {
+    opengl = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-gmmlib
+        intel-media-driver
+        intel-ocl
+        libvdpau-va-gl
+        vulkan-tools
+        vaapiIntel
+        vaapiVdpau
+        mesa.drivers
+      ];
+    };
+  };
 }

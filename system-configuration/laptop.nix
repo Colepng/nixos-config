@@ -7,7 +7,7 @@
   services.tlp = {
     enable = true;
     settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "powersave";
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
       CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
@@ -23,7 +23,7 @@
       STOP_CHARGE_THRESH_BAT1 = 80; # 80 and above it stops charging
 
       MEM_SLEEP_ON_AC = "s2idle";
-      MEM_SLEEP_ON_BAT = "deep";
+      MEM_SLEEP_ON_BAT = "s2idle";
 
       CPU_BOOST_ON_AC = 1;
       CPU_BOOST_ON_BAT = 0;
@@ -31,4 +31,11 @@
   };
 
   services.upower.enable = true;
+
+  services.logind = {
+    powerKey = "hibernate";
+    powerKeyLongPress = "poweroff";
+    lidSwitch = "suspend-then-hibernate";
+  };
+
 }

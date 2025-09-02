@@ -222,6 +222,8 @@
 
           # swipe down with 4 fingers
           ", swipe:3:u, killactive"
+
+          ", edge:u:r, exec, hyprshot -z -o ~/Pictures/screenshots -f screenshot-\"$(date +%F-%X)\".png -m region"
         ];
 
         hyprgrass-bindm = [

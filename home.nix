@@ -36,6 +36,7 @@
     nil
     kdePackages.qtdeclarative
     mpv
+    racket
     vlc
     evince
   ];

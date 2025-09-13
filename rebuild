@@ -1,0 +1,15 @@
+#!/usr/bin/env fish
+
+set name (date)
+
+if not git diff --quiet
+    echo "Changes detected, proceeding with rebuild."
+    git diff -U0
+    if sudo nixos-rebuild switch
+        git add --all
+        git commit -m "$name"
+    end
+else
+    echo "No changes detectd, exiting"
+end
+

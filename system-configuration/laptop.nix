@@ -33,7 +33,7 @@
   services.upower.enable = true;
 
   services.logind = {
-    powerKey = "hibernate";
+    powerKey = "suspend-then-hibernate";
     powerKeyLongPress = "poweroff";
     lidSwitch = "suspend-then-hibernate";
   };

@@ -215,6 +215,8 @@
 
           # swipe up from bottom edge
           ", edge:d:u, exec, busctl call --user sm.puri.OSK0 /sm/puri/OSK0 sm.puri.OSK0 SetVisible b true"
+          # swipe down from right edge
+          ", edge:r:d, exec, busctl call --user sm.puri.OSK0 /sm/puri/OSK0 sm.puri.OSK0 SetVisible b true"
 
           ", edge:u:d, exec, nwg-drawer"
 

@@ -196,12 +196,10 @@
 
   environment.systemPackages = with pkgs; [
     gparted
-
     texlive.combined.scheme-full
-    # git must be instleed for flakes
     git
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
+    docker-compose
+    docker
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

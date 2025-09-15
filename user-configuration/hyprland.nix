@@ -156,6 +156,7 @@
       };
 
       input.touchpad.natural_scroll = true;
+      input.tablet.output = "eDP-1";
 
       gestures = {
         workspace_swipe = true;

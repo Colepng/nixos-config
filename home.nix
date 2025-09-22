@@ -39,6 +39,8 @@
     racket
     vlc
     evince
+    nvtopPackages.intel
+    linuxKernel.packages.linux_zen.cpupower
   ];
 
   programs = {

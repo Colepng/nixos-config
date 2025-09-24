@@ -41,6 +41,9 @@
     evince
     nvtopPackages.intel
     linuxKernel.packages.linux_zen.cpupower
+    libreoffice-fresh
+    hunspell
+    hunspellDicts.en_CA
   ];
 
   programs = {

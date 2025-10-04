@@ -44,6 +44,7 @@
     libreoffice-fresh
     hunspell
     hunspellDicts.en_CA
+    tinymist
   ];
 
   programs = {

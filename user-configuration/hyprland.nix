@@ -319,7 +319,7 @@
   };
 
   programs.hyprlock = {
-    enable = true;
+    enable = false;
     settings = {
       general = {
         hide_cursor = false;

@@ -45,6 +45,7 @@
     hunspell
     hunspellDicts.en_CA
     tinymist
+    websocat
   ];
 
   programs = {

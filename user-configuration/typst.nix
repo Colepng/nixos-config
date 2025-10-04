@@ -12,6 +12,7 @@ in
   home.packages =
     with pkgs;
     [
+      typst
       tinymist
       websocat
     ]

@@ -53,4 +53,6 @@
       ];
     };
   };
+
+  environment.systemPackages = [ pkgs.fw-fanctrl ];
 }

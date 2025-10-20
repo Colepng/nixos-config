@@ -71,7 +71,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Toronto";
@@ -203,8 +203,8 @@
     gparted
     texlive.combined.scheme-full
     git
-    docker-compose
-    docker
+    # docker-compose
+    # docker
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

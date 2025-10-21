@@ -163,8 +163,11 @@
       input.tablet.output = "eDP-1";
 
       gestures = {
-        workspace_swipe = true;
         workspace_swipe_cancel_ratio = 0.15;
+      };
+
+      gesture = {
+        "gesture" = "3, horizontal, workspace";
       };
 
       windowrule = [

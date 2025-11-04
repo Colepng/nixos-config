@@ -23,7 +23,14 @@
     };
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    caelestia-shell.url = "github:caelestia-dots/shell";
+
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak";
+
   };
 
   outputs =
@@ -35,6 +42,7 @@
       stylix,
       spicetify-nix,
       caelestia-shell,
+      nix-flatpak,
       ...
     }:
     {
@@ -50,6 +58,7 @@
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
             spicetify-nix.nixosModules.spicetify
+            nix-flatpak.nixosModules.nix-flatpak
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
@@ -57,7 +66,10 @@
                 inherit caelestia-shell;
               };
 
-              home-manager.users.cole = import ./home.nix;
+              home-manager.users.cole.imports = [
+                ./home.nix
+                caelestia-shell.homeManagerModules.default
+              ];
             }
 
             nixos-hardware.nixosModules.framework-12-13th-gen-intel

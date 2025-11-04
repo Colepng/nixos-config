@@ -47,8 +47,8 @@
         intel-ocl
         libvdpau-va-gl
         vulkan-tools
-        vaapiIntel
-        vaapiVdpau
+        intel-vaapi-driver
+        libva-vdpau-driver
         mesa.drivers
       ];
     };

@@ -44,7 +44,7 @@
     libreoffice-fresh
     hunspell
     hunspellDicts.en_CA
-    fastmail-desktop
+    gnome-software
   ];
 
   programs = {

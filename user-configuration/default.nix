@@ -5,7 +5,6 @@
     ./hyprland.nix
     ./fonts.nix
     ./typst.nix
+    ./caelestia.nix
   ];
-
-  home.packages = [ caelestia-shell.packages.${pkgs.system}.caelestia-shell ];
 }

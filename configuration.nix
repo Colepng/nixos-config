@@ -60,6 +60,19 @@
     # It will just not appear on screen unless a key is pressed
     loader.timeout = 0;
   };
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5.waylandFrontend = true;
+    fcitx5.addons = with pkgs; [
+      # fcitx5-gtk
+      # fcitx5-qt6
+      # rime-data
+      # fcitx5-rime
+      # fcitx5-chinese-addons
+      # fcitx5-nord
+    ];
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -108,6 +121,14 @@
   services.fwupd.enable = true;
   services.fwupd.uefiCapsuleSettings.DisableCapsuleUpdateOnDisk = true;
 
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "com.fastmail.Fastmail"
+    ];
+    uninstallUnmanaged = true;
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.cole = {
     isNormalUser = true;
@@ -151,7 +172,7 @@
       };
 
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
     };

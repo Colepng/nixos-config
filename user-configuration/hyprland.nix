@@ -1,5 +1,10 @@
 # Nix os module that configures hyprland for users
-{ config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 {
   # Pkgs used by hyprland or my hyprland config
@@ -19,7 +24,7 @@
   ];
 
   services.mako = {
-    enable = true;
+    enable = false;
     settings = {
       "actionable=true" = {
         anchor = "top-left";
@@ -82,7 +87,6 @@
       exec-once = [
         "swww restore"
         "iio-hyprland --left-master"
-        "caelestia-shell"
         "nm-applet"
         "wl-paste --watch cliphist store"
         "squeekboard"
@@ -221,8 +225,8 @@
           # swipe left from right edge
           " , edge:l:r, workspace, m-1"
 
-          # swipe up from bottom edge
-          ", edge:d:u, exec, busctl call --user sm.puri.OSK0 /sm/puri/OSK0 sm.puri.OSK0 SetVisible b true"
+          # # swipe up from bottom edge
+          # ", edge:d:u, exec, busctl call --user sm.puri.OSK0 /sm/puri/OSK0 sm.puri.OSK0 SetVisible b true"
           # swipe down from right edge
           ", edge:r:d, exec, busctl call --user sm.puri.OSK0 /sm/puri/OSK0 sm.puri.OSK0 SetVisible b true"
 
@@ -276,6 +280,8 @@
         "$mainMod, J, togglesplit"
         "$mainMod, X, togglespecialworkspace"
 
+        "$mainMod, L, global, caelestia:lock"
+
         # Window movment
         # Move focus with mainMod + arrow keys,
         "$mainMod, A, movefocus, l"
@@ -289,7 +295,7 @@
         "$altMod, S, swapwindow, d"
 
         # Apps
-        "$mainMod, Space, exec, fuzzel"
+        "$mainMod, Space, global, caelestia:launcher"
         "$mainMod, Return, exec, foot"
         "$altMod, C, exec, firefox --new-tab \"https://app.fastmail.com/calendar/week/\""
         "$altMod, M, exec, firefox --new-tab \"https://app.fastmail.com/mail/Inbox\""

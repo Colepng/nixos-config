@@ -55,8 +55,12 @@
     };
     git = {
       enable = true;
-      userName = "Cole Kauder-McMurrich";
-      userEmail = "gamingwithcole7@gmail.com";
+      settings = {
+        user = {
+          email = "gamingwithcole7@gmail.com";
+          name = "Cole Kauder-McMurrich";
+        };
+      };
     };
     firefox.enable = true;
     neovim = {
@@ -67,7 +71,7 @@
       vimdiffAlias = true;
     };
     vscode = {
-      enable = true;
+      enable = false;
       extensions = with pkgs.vscode-extensions; [
         dracula-theme.theme-dracula
         vscodevim.vim

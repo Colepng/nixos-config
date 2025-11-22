@@ -62,7 +62,7 @@
     enable = true;
     settings = {
       main = {
-        termainl = "${pkgs.foot}/bin/foot";
+        termainl = "/etc/profiles/per-user/cole/bin/foot";
         layer = "overlay";
         inner-pad = 15;
         fields = "filename,name";
@@ -91,6 +91,7 @@
         "wl-paste --watch cliphist store"
         "squeekboard"
         "syshud"
+        "waybar"
       ];
 
       xwayland.force_zero_scaling = true;
@@ -180,6 +181,11 @@
 
         # Fix some dragging issues with XWayland
         "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+
+        "workspace 9 silent, class:spotify"
+        "workspace 8 silent, class:discord"
+        "workspace 7 silent, class:Fastmail"
+        "workspace 2 silent, class:com.github.flxzt.rnote"
       ];
 
       plugin.touch_gestures = {
@@ -295,7 +301,7 @@
         "$altMod, S, swapwindow, d"
 
         # Apps
-        "$mainMod, Space, global, caelestia:launcher"
+        "$mainMod, Space, exec, fuzzel"
         "$mainMod, Return, exec, foot"
         "$altMod, C, exec, firefox --new-tab \"https://app.fastmail.com/calendar/week/\""
         "$altMod, M, exec, firefox --new-tab \"https://app.fastmail.com/mail/Inbox\""

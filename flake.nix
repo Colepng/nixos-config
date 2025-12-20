@@ -47,14 +47,46 @@
     }:
     {
       nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
+        lenovo = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
             inherit rust-overlay;
             inherit inputs;
           };
           modules = [
-            ./configuration.nix
+            ./machine/lenovo
+            ./machine/common
+
+            stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager
+            spicetify-nix.nixosModules.spicetify
+            nix-flatpak.nixosModules.nix-flatpak
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit caelestia-shell;
+              };
+
+              home-manager.users.cole.imports = [
+                ./home.nix
+                caelestia-shell.homeManagerModules.default
+              ];
+            }
+
+            nixos-hardware.nixosModules.lenovo-legion-16achg6-hybrid
+          ];
+        };
+        framework = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit rust-overlay;
+            inherit inputs;
+          };
+          modules = [
+            ./machine/framework
+            ./machine/common
+
             stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager
             spicetify-nix.nixosModules.spicetify

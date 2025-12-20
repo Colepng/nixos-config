@@ -6,5 +6,6 @@
     ./fonts.nix
     ./typst.nix
     ./caelestia.nix
+    ./waybar.nix
   ];
 }

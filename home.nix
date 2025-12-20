@@ -75,7 +75,7 @@
       enable = true;
       settings = {
         user = {
-          email = "gamingwithcole7@gmail.com";
+          email = "cole@colepng.com";
           name = "Cole Kauder-McMurrich";
         };
       };

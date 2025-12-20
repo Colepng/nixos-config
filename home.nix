@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  caelestia-shell,
   ...
 }:
 
@@ -72,6 +70,7 @@
       # enableFishIntegration = true;
       nix-direnv.enable = true;
     };
+
     git = {
       enable = true;
       settings = {
@@ -81,7 +80,9 @@
         };
       };
     };
+
     firefox.enable = true;
+
     neovim = {
       enable = true;
       defaultEditor = true;
@@ -89,15 +90,7 @@
       vimAlias = true;
       vimdiffAlias = true;
     };
-    vscode = {
-      enable = false;
-      extensions = with pkgs.vscode-extensions; [
-        dracula-theme.theme-dracula
-        vscodevim.vim
-        yzhang.markdown-all-in-one
-        jnoortheen.nix-ide
-      ];
-    };
+
     fish = {
       enable = true;
       interactiveShellInit = ''
@@ -108,6 +101,7 @@
 
   services = {
     poweralertd.enable = true;
+
     syncthing = {
       enable = true;
       tray.enable = true;

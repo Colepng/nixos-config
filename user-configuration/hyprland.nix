@@ -46,6 +46,8 @@
     };
   };
 
+  services.polkit-gnome.enable = true;
+
   services.swww.enable = true;
   services.cliphist = {
     enable = true;

@@ -279,7 +279,6 @@
         "$altMod, S, swapwindow, d"
 
         # Apps
-        "$mainMod, Space, exec, fuzzel"
         "$mainMod, Return, exec, foot"
         "$altMod, C, exec, firefox --new-tab \"https://app.fastmail.com/calendar/week/\""
         "$altMod, M, exec, firefox --new-tab \"https://app.fastmail.com/mail/Inbox\""
@@ -306,6 +305,14 @@
             ]
           ) 9
         )
+      )
+      ++ (
+        if config.programs.caelestia.enable then
+          [ "$mainMod, Space, global, caelestia:launcher" ]
+        else
+          [
+            "$mainMod, Space, exec, fuzzel"
+          ]
       );
 
       bindm = [

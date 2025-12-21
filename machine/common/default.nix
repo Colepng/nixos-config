@@ -7,6 +7,5 @@
     ./stylix.nix
     ./services.nix
     ./programs.nix
-    ./boot.nix
   ];
 }

@@ -46,6 +46,7 @@
     hunspell
     hunspellDicts.en_CA
     gnome-software
+    dust
   ];
   programs.obs-studio = {
     enable = true;

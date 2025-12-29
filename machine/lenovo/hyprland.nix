@@ -2,8 +2,6 @@
 
 {
   home-manager.users.cole = {
-    programs.caelestia.enable = true;
-
     wayland.windowManager.hyprland.settings = {
       monitor = "eDP-1,preferred,auto,1.6";
 

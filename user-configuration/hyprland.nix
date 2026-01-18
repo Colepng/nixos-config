@@ -140,11 +140,6 @@
       input.touchpad.natural_scroll = true;
       input.tablet.output = "eDP-1";
 
-      device = {
-        name = "ilit2901:00-222a:5539";
-        enabled = false;
-      };
-
       gestures = {
         workspace_swipe_cancel_ratio = 0.15;
       };

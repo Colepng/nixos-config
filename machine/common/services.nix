@@ -40,6 +40,7 @@
       enable = true;
       packages = [
         "com.fastmail.Fastmail"
+        "com.github.flxzt.rnote"
       ];
       uninstallUnmanaged = true;
     };

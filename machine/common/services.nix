@@ -45,6 +45,9 @@
       uninstallUnmanaged = true;
     };
   };
+
+  services.blueman.enable = true;
+
   services.iio-niri.enable = true;
 
   # needed by pipewire

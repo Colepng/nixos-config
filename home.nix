@@ -25,7 +25,7 @@
     btop
     nixfmt-rfc-style
     krita
-    discord
+    vesktop
     kdePackages.filelight
     networkmanagerapplet
     helvum

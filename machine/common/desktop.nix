@@ -6,8 +6,9 @@
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = false;
-  services.displayManager.defaultSession = "hyprland";
-  programs.hyprland.enable = true;
+  services.displayManager.defaultSession = "niri";
+  programs.hyprland.enable = false;
+  programs.niri.enable = true;
 
   environment.systemPackages = [
     pkgs.kitty

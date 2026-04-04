@@ -29,6 +29,21 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
   };
@@ -96,10 +111,14 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
                 inherit caelestia-shell;
+                inherit inputs;
               };
 
               home-manager.users.cole.imports = [
                 ./home.nix
+                inputs.niri.homeModules.niri
+                inputs.dms.homeModules.dank-material-shell
+                inputs.dms.homeModules.niri
                 caelestia-shell.homeManagerModules.default
               ];
             }

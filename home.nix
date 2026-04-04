@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 
@@ -18,6 +19,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    xwayland-satellite
     neofetch
     ripgrep
     btop
@@ -62,6 +64,56 @@
       obs-vkcapture
     ];
   };
+
+  programs.dank-material-shell = {
+    enable = true;
+
+    dgop.package = inputs.dgop.packages.${pkgs.system}.default;
+
+    systemd = {
+      enable = true; # Systemd service for auto-start
+      restartIfChanged = true; # Auto-restart dms.service when dank-material-shell changes
+    };
+
+    niri = {
+      enableKeybinds = true; # Sets static preset keybinds
+    };
+
+    # Core features
+    enableSystemMonitoring = true; # System monitoring widgets (dgop)
+    enableVPN = true; # VPN management widget
+    enableDynamicTheming = false; # Wallpaper-based theming (matugen)
+    enableAudioWavelength = true; # Audio visualizer (cava)
+    enableCalendarEvents = true; # Calendar integration (khal)
+    enableClipboardPaste = true; # Pasting items from the clipboard (wtype)
+
+    settings = {
+      theme = "dark";
+      dynamicTheming = true;
+      # Add any other settings here
+    };
+
+    session = {
+      isLightMode = false;
+      # Add any other session state settings here
+    };
+
+    clipboardSettings = {
+      maxHistory = 25;
+      maxEntrySize = 5242880;
+      autoClearDays = 1;
+      clearAtStartup = true;
+      disabled = false;
+      disableHistory = false;
+      disablePersist = true;
+    };
+  };
+
+  programs.niri.settings = {
+    input.tablet.map-to-output = "eDP-1";
+  };
+
+  # systemd.user.services.niri-flake-polkit.enable = false;
 
   programs = {
     direnv = {

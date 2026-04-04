@@ -19,6 +19,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    kdePackages.ark
     xwayland-satellite
     neofetch
     ripgrep

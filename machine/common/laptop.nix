@@ -55,6 +55,7 @@
         mesa
       ];
     };
+    graphics.enable32Bit = true;
   };
 
   environment.systemPackages = [ pkgs.fw-fanctrl ];

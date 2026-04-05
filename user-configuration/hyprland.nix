@@ -297,6 +297,8 @@
             [
               "$mainMod, code:1${toString i}, workspace, ${toString ws}"
               "$altMainMod, code:1${toString i}, movetoworkspace, ${toString ws}"
+              "$altMod, code:1${toString i}, workspace, ${toString (ws + 10)}"
+              "$altAltMainMod, code:1${toString i}, movetoworkspace, ${toString (ws + 10)}"
             ]
           ) 9
         )
@@ -390,10 +392,10 @@
           on-resume = "hyprctl dispatch dpms on && brightnessctl -r";
         }
 
-        {
-          timeout = 600;
-          on-timeout = "systemctl suspend";
-        }
+        # {
+        #   timeout = 600;
+        #   on-timeout = "systemctl suspend";
+        # }
       ];
     };
   };

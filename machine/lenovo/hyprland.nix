@@ -1,9 +1,36 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   home-manager.users.cole = {
     wayland.windowManager.hyprland.settings = {
-      monitor = "eDP-1,preferred,auto,1.6";
+      monitor = [
+        "DP-2,1920x1080@144, 0x0, 1"
+        "HDMI-A-1,1680x1050@60, 1920x0, 1"
+        "eDP-1, disabled"
+      ];
+
+      workspace = [
+        "1, monitor:DP-2"
+        "2, monitor:DP-2"
+        "3, monitor:DP-2"
+        "4, monitor:DP-2"
+        "5, monitor:DP-2"
+        "6, monitor:DP-2"
+        "7, monitor:DP-2"
+        "8, monitor:DP-2"
+        "9, monitor:DP-2"
+        "10, monitor:DP-2"
+        "11, monitor:HDMI-A-1"
+        "12, monitor:HDMI-A-1"
+        "13, monitor:HDMI-A-1"
+        "14, monitor:HDMI-A-1"
+        "15, monitor:HDMI-A-1"
+        "16, monitor:HDMI-A-1"
+        "17, monitor:HDMI-A-1"
+        "18, monitor:HDMI-A-1"
+        "19, monitor:HDMI-A-1"
+        "20, monitor:HDMI-A-1"
+      ];
 
       plugins = [ ];
 
@@ -40,9 +67,16 @@
         ];
       };
     };
-    # {
-    #   monitor = "eDP-1,preferred,auto,1.6";
-    #
-    # };
+  };
+
+  specialisation = {
+    on-the-go.configuration = {
+      system.nixos.tags = [ "on-the-go" ];
+      home-manager.users.cole.wayland.windowManager.hyprland.settings = {
+        monitor = lib.mkForce "eDP-1, 2560x1600@165, 0x0, 1.6";
+
+        workspace = lib.mkForce [ ];
+      };
+    };
   };
 }

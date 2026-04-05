@@ -2,13 +2,9 @@
 { config, pkgs, ... }:
 
 {
-  # Enable the plasma Desktop Environment.
+  # login manager
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = false;
-  services.displayManager.defaultSession = "niri";
-  programs.hyprland.enable = false;
-  programs.niri.enable = true;
 
   environment.systemPackages = [
     pkgs.kitty

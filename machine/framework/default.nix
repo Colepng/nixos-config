@@ -4,5 +4,6 @@
     ./configuration.nix
     ./boot.nix
     ./hardware.nix
+    ./desktop.nix
   ];
 }

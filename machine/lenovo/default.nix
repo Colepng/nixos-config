@@ -5,5 +5,6 @@
     ./boot.nix
     ./hyprland.nix
     ./hardware.nix
+    ./desktop.nix
   ];
 }

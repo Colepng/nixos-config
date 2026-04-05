@@ -148,7 +148,7 @@
         "gesture" = "3, horizontal, workspace";
       };
 
-      windowrule = [
+      windowrule = lib.mkDefault [
         # Ignore maximize requests from apps. You'll probably like this.
         "suppressevent maximize, class:.*"
 

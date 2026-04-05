@@ -58,6 +58,18 @@
           "workspacesOut, 1, 1.94, almostLinear, fade"
         ];
 
+        windowrule = [
+          # Ignore maximize requests from apps. You'll probably like this.
+          "suppressevent maximize, class:.*"
+
+          # Fix some dragging issues with XWayland
+          "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+
+          "workspace 10 silent, class:spotify"
+          "workspace 12 silent, class:discord"
+          "workspace 7 silent, class:Fastmail"
+        ];
+
         bezier = [
           "easeOutQuint,0.23,1,0.32,1"
           "easeInOutCubic,0.65,0.05,0.36,1"

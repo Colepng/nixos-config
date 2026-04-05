@@ -19,12 +19,13 @@
 
     spicetify = {
       enable = true;
-      enabledExtensions = with inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system}.extensions; [
-        allOfArtist
-        wikify
-        skipStats
-        fullScreen
-      ];
+      enabledExtensions =
+        with inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}.extensions; [
+          allOfArtist
+          wikify
+          skipStats
+          fullScreen
+        ];
     };
 
     nh = {

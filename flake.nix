@@ -84,7 +84,8 @@
               };
 
               home-manager.users.cole.imports = [
-                ./home.nix
+                ./home-manager/common
+                ./home-manager/lenovo
                 caelestia-shell.homeManagerModules.default
               ];
             }
@@ -115,7 +116,8 @@
               };
 
               home-manager.users.cole.imports = [
-                ./home.nix
+                ./home-manager/common
+                ./home-manager/framework
                 inputs.niri.homeModules.niri
                 inputs.dms.homeModules.dank-material-shell
                 inputs.dms.homeModules.niri

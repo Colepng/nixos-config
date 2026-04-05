@@ -9,7 +9,6 @@
 {
   # Pkgs used by hyprland or my hyprland config
   home.packages = with pkgs; [
-    foot
     waybar
     playerctl
     brightnessctl
@@ -46,8 +45,6 @@
     };
   };
 
-  services.polkit-gnome.enable = true;
-
   services.swww.enable = true;
   services.cliphist = {
     enable = true;
@@ -56,7 +53,6 @@
       "100000"
     ];
   };
-  services.udiskie.enable = true;
 
   # needed for termainl inside hyprland
   programs.kitty.enable = true;

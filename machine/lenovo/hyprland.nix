@@ -9,6 +9,10 @@
         "eDP-1, disabled"
       ];
 
+      cursor = {
+        no_hardware_cursors = true;
+      };
+
       workspace = [
         "1, monitor:DP-2"
         "2, monitor:DP-2"

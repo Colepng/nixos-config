@@ -55,6 +55,8 @@
         PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
       };
     };
+
+    ratbagd.enable = true;
   };
 
   # needed by pipewire

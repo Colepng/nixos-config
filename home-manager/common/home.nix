@@ -39,6 +39,7 @@
     gnome-software
     dust
     spotify
+    piper
     hyprshot
     jellyfin-desktop
     jellyflix

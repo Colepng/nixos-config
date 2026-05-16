@@ -39,5 +39,8 @@
     hunspellDicts.en_CA
     gnome-software
     dust
+    hyprshot
+    jellyfin-desktop
+    jellyflix
   ];
 }

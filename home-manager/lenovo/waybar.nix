@@ -2,7 +2,7 @@
 
 {
   programs.waybar = {
-    enable = false;
+    enable = true;
     settings = {
       bar = {
         layer = "top";

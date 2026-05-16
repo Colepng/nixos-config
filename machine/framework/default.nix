@@ -5,5 +5,6 @@
     ./boot.nix
     ./hardware.nix
     ./desktop.nix
+    ./services.nix
   ];
 }

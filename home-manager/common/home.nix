@@ -39,6 +39,7 @@
     hunspellDicts.en_CA
     gnome-software
     dust
+    spotify
     hyprshot
     jellyfin-desktop
     jellyflix

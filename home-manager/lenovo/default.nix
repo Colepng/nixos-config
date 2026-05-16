@@ -5,5 +5,6 @@
     ./hyprland.nix
     ./programs.nix
     ./waybar.nix
+    ./pkgs.nix
   ];
 }

@@ -57,10 +57,6 @@
     };
   };
 
-  services.blueman.enable = true;
-
-  services.iio-niri.enable = true;
-
   # needed by pipewire
   security.rtkit.enable = true;
 }

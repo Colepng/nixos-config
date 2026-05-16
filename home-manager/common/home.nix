@@ -13,7 +13,6 @@
     foot
     rnote
     kdePackages.ark
-    xwayland-satellite
     neofetch
     ripgrep
     btop

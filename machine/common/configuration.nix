@@ -65,5 +65,10 @@
     git
   ];
 
+  nix.settings.trusted-users = [
+    "root"
+    "cole"
+  ];
+
   system.stateVersion = "25.11";
 }

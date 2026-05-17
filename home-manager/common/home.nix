@@ -41,7 +41,5 @@
     spotify
     piper
     hyprshot
-    jellyfin-desktop
-    jellyflix
   ];
 }

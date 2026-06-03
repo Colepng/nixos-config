@@ -6,7 +6,7 @@
       monitor = [
         "DP-2,1920x1080@144, 0x0, 1"
         "HDMI-A-1,1680x1050@60, 1920x0, 1"
-        "eDP-1, disabled"
+        "eDP-2, disabled"
       ];
 
       cursor = {
@@ -60,18 +60,6 @@
           "workspaces, 1, 1.94, almostLinear, fade"
           "workspacesIn, 1, 1.21, almostLinear, fade"
           "workspacesOut, 1, 1.94, almostLinear, fade"
-        ];
-
-        windowrule = [
-          # Ignore maximize requests from apps. You'll probably like this.
-          "suppressevent maximize, class:.*"
-
-          # Fix some dragging issues with XWayland
-          "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
-
-          "workspace 10 silent, class:spotify"
-          "workspace 12 silent, class:discord"
-          "workspace 7 silent, class:Fastmail"
         ];
 
         bezier = [

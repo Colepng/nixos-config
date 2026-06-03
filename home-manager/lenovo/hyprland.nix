@@ -76,7 +76,6 @@
     enable = true;
 
     plugins = lib.mkDefault [
-      pkgs.hyprlandPlugins.hyprgrass
     ];
 
     settings = {
@@ -145,21 +144,21 @@
       };
 
       windowrule = lib.mkDefault [
-        # Ignore maximize requests from apps. You'll probably like this.
-        "suppressevent maximize, class:.*"
+        # ignore maximize requests from apps. you'll probably like this.
+        "suppress_event maximize, match:class .*"
 
-        # Fix some dragging issues with XWayland
-        "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+        # fix some dragging issues with xwayland
+        "no_focus 1, match:class ^$, match:title ^$, match:xwayland 1, match:float 1, match:fullscreen 0, match:pin 0"
 
-        "workspace 9 silent, class:spotify"
-        "workspace 8 silent, class:discord"
-        "workspace 7 silent, class:Fastmail"
-        "workspace 2 silent, class:com.github.flxzt.rnote"
+        "workspace 11 silent, match:class spotify"
+        "workspace 14 silent, match:class discord"
+        "workspace 7 silent, match:class fastmail"
+        "match:class steam_app_2483190, float off"
       ];
 
       plugin.touch_gestures = {
-        # The default sensitivity is probably too low on tablet screens,
-        # I recommend turning it up to 4.0
+        # the default sensitivity is probably too low on tablet screens,
+        # i recommend turning it up to 4.0
         sensitivity = 4.0;
 
         # must be >= 3
@@ -175,7 +174,7 @@
         long_press_delay = 400;
 
         # resize windows by long-pressing on window borders and gaps.
-        # If general:resize_on_border is enabled, general:extend_border_grab_area is used for floating
+        # if general:resize_on_border is enabled, general:extend_border_grab_area is used for floating
         # windows
         resize_on_border_long_press = true;
 
@@ -183,14 +182,14 @@
         edge_margin = 10;
 
         # emulates touchpad swipes when swiping in a direction that does not trigger workspace swipe.
-        # ONLY triggers when finger count is equal to workspace_swipe_fingers
+        # only triggers when finger count is equal to workspace_swipe_fingers
         #
         # might be removed in the future in favor of event hooks
         emulate_touchpad_swipe = false;
 
         experimental = {
           # send proper cancel events to windows instead of hacky touch_up events,
-          # NOT recommended as it crashed a few times, once it's stabilized I'll make it the default
+          # not recommended as it crashed a few times, once it's stabilized i'll make it the default
           send_cancel = 0;
         };
 
@@ -201,16 +200,16 @@
           " , edge:l:r, workspace, m-1"
 
           # # swipe up from bottom edge
-          # ", edge:d:u, exec, busctl call --user sm.puri.OSK0 /sm/puri/OSK0 sm.puri.OSK0 SetVisible b true"
+          # ", edge:d:u, exec, busctl call --user sm.puri.osk0 /sm/puri/osk0 sm.puri.osk0 setvisible b true"
           # swipe down from right edge
-          ", edge:r:d, exec, busctl call --user sm.puri.OSK0 /sm/puri/OSK0 sm.puri.OSK0 SetVisible b true"
+          ", edge:r:d, exec, busctl call --user sm.puri.osk0 /sm/puri/osk0 sm.puri.osk0 setvisible b true"
 
           ", edge:u:d, exec, nwg-drawer"
 
           # swipe down with 4 fingers
           ", swipe:3:u, killactive"
 
-          ", edge:u:r, exec, hyprshot -z -o ~/Pictures/screenshots -f screenshot-\"$(date +%F-%X)\".png -m region"
+          ", edge:u:r, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-\"$(date +%f-%x)\".png -m region"
         ];
 
         hyprgrass-bindm = [
@@ -220,66 +219,66 @@
         ];
       };
 
-      "$mainMod" = "SUPER";
-      "$altMod" = "ALT";
-      "$altMainMod" = "SUPER + SHIFT";
-      "$altAltMainMod" = "SUPER + ALT";
+      "$mainmod" = "super";
+      "$altmod" = "alt";
+      "$altmainmod" = "super + shift";
+      "$altaltmainmod" = "super + alt";
 
       bindl = [
-        "$mainMod, Delete, exit"
+        "$mainmod, delete, exit"
 
-        # Audio keys
-        ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-        ",XF86AudioLowerVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-"
-        ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ",XF86AudioMuteMic, exec, wpctl set-mute -l 1 @DEFAULT_AUDIO_SOURCE@ toggle"
+        # audio keys
+        ",xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+        ",xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+        ",xf86audiomute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        # ",xf86audiomutemic, exec, wpctl set-mute -l 1 @DEFAULT_AUDIO_SINK@ toggle"
 
-        # Brightness keys
-        ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
-        ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+        # brightness keys
+        ",xf86monbrightnessup, exec, brightnessctl -e4 -n2 set 5%+"
+        ",xf86monbrightnessdown, exec, brightnessctl -e4 -n2 set 5%-"
 
-        # Media control keys
-        ",XF86AudioNext, exec, playerctl next"
-        ",XF86AudioPause, exec, playerctl play-pause"
-        ",XF86AudioPlay, exec, playerctl play-pause"
-        ",XF86AudioPrev, exec, playerctl previous"
+        # media control keys
+        ",xf86audionext, exec, playerctl next"
+        ",xf86audiopause, exec, playerctl play-pause"
+        ",xf86audioplay, exec, playerctl play-pause"
+        ",xf86audioprev, exec, playerctl previous"
       ];
 
       bind = [
-        # Hyprland interaction
-        "$mainMod, Q, killactive"
-        "$mainMod, F, togglefloating"
-        "$mainMod, M, fullscreen"
-        "$altMainMod, M, fullscreen, 1"
-        "$mainMod SHIFT, P, pin"
-        "$mainMod, J, togglesplit"
-        "$mainMod, X, togglespecialworkspace"
+        # hyprland interaction
+        "$mainmod, q, killactive"
+        "$mainmod, f, togglefloating"
+        "$mainmod, m, fullscreen"
+        "$altmainmod, m, fullscreen, 1"
+        "$mainmod shift, p, pin"
+        "$mainmod, j, layoutmsg, togglesplit"
+        "$mainmod, x, togglespecialworkspace"
 
-        "$mainMod, L, global, caelestia:lock"
+        "$mainmod, l, global, caelestia:lock"
 
-        # Window movment
-        # Move focus with mainMod + arrow keys,
-        "$mainMod, A, movefocus, l"
-        "$mainMod, D, movefocus, r"
-        "$mainMod, W, movefocus, u"
-        "$mainMod, S, movefocus, d"
+        # window movment
+        # move focus with mainmod + arrow keys,
+        "$mainmod, a, movefocus, l"
+        "$mainmod, d, movefocus, r"
+        "$mainmod, w, movefocus, u"
+        "$mainmod, s, movefocus, d"
 
-        "$altMod, A, swapwindow, l"
-        "$altMod, D, swapwindow, r"
-        "$altMod, W, swapwindow, u"
-        "$altMod, S, swapwindow, d"
+        "$altmod, a, swapwindow, l"
+        "$altmod, d, swapwindow, r"
+        "$altmod, w, swapwindow, u"
+        "$altmod, s, swapwindow, d"
 
-        # Apps
-        "$mainMod, Return, exec, foot"
-        "$altMod, C, exec, firefox --new-tab \"https://app.fastmail.com/calendar/week/\""
-        "$altMod, M, exec, firefox --new-tab \"https://app.fastmail.com/mail/Inbox\""
+        # apps
+        "$mainmod, return, exec, foot"
+        "$altmod, c, exec, firefox --new-tab \"https://app.fastmail.com/calendar/week/\""
+        "$altmod, m, exec, firefox --new-tab \"https://app.fastmail.com/mail/inbox\""
 
-        # Utils
-        "$mainMod, P, exec, hyprshot -z -o ~/Pictures/screenshots -f screenshot-\"$(date +%F-%X)\".png -m region"
-        "$altMainMod, P, exec, hyprshot -z -o ~/Pictures/screenshots -f screenshot-\"$(date +%F-%X)\".png -m window"
-        "$altMod, P, exec, -m window > ~/Pictures/screenshots/screenshot-\"$(date +%F-%X)\".png -m output"
+        # utils
+        "$mainmod, p, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-\"$(date +%f-%x)\".png -m region"
+        "$altmainmod, p, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-\"$(date +%f-%x)\".png -m window"
+        "$altmod, p, exec, -m window > ~/pictures/screenshots/screenshot-\"$(date +%f-%x)\".png -m output"
 
-        "$mainMod, V, exec, ~/Documents/Temp/cliphist-fuzzel-img"
+        "$mainmod, v, exec, ~/documents/temp/cliphist-fuzzel-img"
       ]
       ++ (
         # workspaces
@@ -291,26 +290,26 @@
               ws = i + 1;
             in
             [
-              "$mainMod, code:1${toString i}, workspace, ${toString ws}"
-              "$altMainMod, code:1${toString i}, movetoworkspace, ${toString ws}"
-              "$altMod, code:1${toString i}, workspace, ${toString (ws + 10)}"
-              "$altAltMainMod, code:1${toString i}, movetoworkspace, ${toString (ws + 10)}"
+              "$mainmod, code:1${toString i}, workspace, ${toString ws}"
+              "$altmainmod, code:1${toString i}, movetoworkspace, ${toString ws}"
+              "$altmod, code:1${toString i}, workspace, ${toString (ws + 10)}"
+              "$altaltmainmod, code:1${toString i}, movetoworkspace, ${toString (ws + 10)}"
             ]
           ) 9
         )
       )
       ++ (
         if config.programs.caelestia.enable then
-          [ "$mainMod, Space, global, caelestia:launcher" ]
+          [ "$mainmod, space, global, caelestia:launcher" ]
         else
           [
-            "$mainMod, Space, exec, fuzzel"
+            "$mainmod, space, exec, fuzzel"
           ]
       );
 
       bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
+        "$mainmod, mouse:272, movewindow"
+        "$mainmod, mouse:273, resizewindow"
       ];
     };
   };
@@ -327,11 +326,11 @@
         enabled = true;
         fade_in = {
           duration = 300;
-          bezier = "easeOutQuint";
+          bezier = "easeoutquint";
         };
         fade_out = {
           duration = 300;
-          bezier = "easeOutQuint";
+          bezier = "easeoutquint";
         };
       };
 
@@ -354,7 +353,7 @@
       #     # inner_color = "rgb(91, 96, 120)";
       #     # outer_color = "rgb(24, 25, 38)";
       #     outline_thickness = 5;
-      #     placeholder_text = "<span foreground=\"##cad3f5\">Password...</span>";
+      #     placeholder_text = "<span foreground=\"##cad3f5\">password...</span>";
       #     shadow_passes = 2;
       #   }
       # ];
@@ -397,7 +396,7 @@
   };
 
   dconf.settings = {
-    "sm/puri/OSK0" = {
+    "sm/puri/osk0" = {
       layout-shape-changes-to-fit-panel = false;
       scale-in-horizontal-screen-orientation = 10.0;
       scale-in-vertical-screen-orientation = 10.0;

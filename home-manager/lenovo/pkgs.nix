@@ -8,5 +8,6 @@
           gamemode
         ];
     })
+    protonup-qt
   ];
 }

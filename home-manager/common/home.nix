@@ -10,10 +10,11 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+  neovim
     foot
     rnote
     kdePackages.ark
-    neofetch
+    fastfetch
     ripgrep
     btop
     nixfmt-rfc-style
@@ -21,7 +22,7 @@
     vesktop
     kdePackages.filelight
     networkmanagerapplet
-    helvum
+    crosspipe
     pwvucontrol
     pcmanfm
     gitkraken

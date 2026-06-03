@@ -26,11 +26,12 @@
     firefox.enable = true;
 
     neovim = {
-      enable = true;
+      enable = false;
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
+    sideloadInitLua = false;
     };
 
     fish = {

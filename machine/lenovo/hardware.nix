@@ -42,5 +42,10 @@
       enable = true;
       enable32Bit = true;
     };
+
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+    nvidia.open = true; # see the note above
   };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 }

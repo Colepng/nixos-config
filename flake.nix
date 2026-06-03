@@ -3,10 +3,12 @@
 
   inputs = {
     # NixOS official package source, using the nixos-25.05 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/master";
+
+    nixpkgs-25.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -16,6 +18,13 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    typst = {
+      url = "github:typst/typst-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-proton-cachyos.url = "github:Flerpharos/nix-proton-cachyos/update-mirror-location";
 
     stylix = {
       url = "github:nix-community/stylix/release-25.11";
@@ -81,6 +90,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
                 inherit caelestia-shell;
+                inherit inputs;
               };
 
               home-manager.users.cole.imports = [
@@ -90,7 +100,7 @@
               ];
             }
 
-            nixos-hardware.nixosModules.lenovo-legion-16achg6-hybrid
+            # nixos-hardware.nixosModules.lenovo-legion-16achg6-nvidia
           ];
         };
         framework = nixpkgs.lib.nixosSystem {

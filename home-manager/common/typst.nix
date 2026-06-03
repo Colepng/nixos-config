@@ -1,5 +1,5 @@
 # Nix module for managing typst
-{ pkgs, lib, ... }:
+{ pkgs, inputs, ... }:
 
 let
   typstPackages = with pkgs.typstPackages; [
@@ -12,9 +12,9 @@ in
   home.packages =
     with pkgs;
     [
-      typst
       tinymist
       websocat
     ]
-    ++ typstPackages;
+    ++ typstPackages
+    ++ [ inputs.typst.packages.${pkgs.system}.default ];
 }

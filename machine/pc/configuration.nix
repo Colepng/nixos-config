@@ -18,6 +18,12 @@
 
   networking.hostName = "pc";
 
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+    2283
+  ];
+
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
 

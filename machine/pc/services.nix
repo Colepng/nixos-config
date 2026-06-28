@@ -10,6 +10,10 @@
       virtualHosts."jellyfin.colepng.com".extraConfig = ''
         reverse_proxy localhost:8096
       '';
+
+      virtualHosts."dawarich.colepng.com".extraConfig = ''
+        reverse_proxy localhost:3000
+      '';
     };
 
     jellyfin = {

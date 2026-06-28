@@ -19,11 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    typst = {
-      url = "github:typst/typst-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-proton-cachyos.url = "github:Flerpharos/nix-proton-cachyos/update-mirror-location";
 
     stylix = {

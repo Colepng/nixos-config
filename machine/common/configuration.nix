@@ -41,6 +41,11 @@
     ];
   };
 
+  #pinned by vesktop
+  nixpkgs.config.permittedInsecurePackages = [
+    "pnpm-10.29.2"
+  ];
+
   users.defaultUserShell = pkgs.fish;
 
   # Allow unfree packages

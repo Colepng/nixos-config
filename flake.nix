@@ -71,6 +71,36 @@
     }:
     {
       nixosConfigurations = {
+        pc = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit rust-overlay;
+            inherit inputs;
+          };
+          modules = [
+            ./machine/pc
+            ./machine/common
+
+            stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager
+            spicetify-nix.nixosModules.spicetify
+            nix-flatpak.nixosModules.nix-flatpak
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit caelestia-shell;
+                inherit inputs;
+              };
+
+              home-manager.users.cole.imports = [
+                ./home-manager/common
+                ./home-manager/pc
+                caelestia-shell.homeManagerModules.default
+              ];
+            }
+          ];
+        };
         lenovo = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {

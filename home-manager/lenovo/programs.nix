@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   programs = {
+    rofi.enable = true;
     obs-studio = {
       enable = true;
 

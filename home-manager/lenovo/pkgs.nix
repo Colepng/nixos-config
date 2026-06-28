@@ -9,5 +9,6 @@
         ];
     })
     protonup-qt
+    prismlauncher
   ];
 }

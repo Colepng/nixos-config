@@ -274,11 +274,10 @@
         "$altmod, m, exec, firefox --new-tab \"https://app.fastmail.com/mail/inbox\""
 
         # utils
-        "$mainmod, p, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-\"$(date +%f-%x)\".png -m region"
-        "$altmainmod, p, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-\"$(date +%f-%x)\".png -m window"
-        "$altmod, p, exec, -m window > ~/pictures/screenshots/screenshot-\"$(date +%f-%x)\".png -m output"
-
-        "$mainmod, v, exec, ~/documents/temp/cliphist-fuzzel-img"
+        "$mainmod, p, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-$(date +%Y-%m-%d_%H-%M-%S).png -m region"
+        "$altmainmod, p, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-$(date +%Y-%m-%d_%H-%M-%S).png -m window"
+        "$altmod, p, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-$(date +%Y-%m-%d_%H-%M-%S).png -m output"
+        "$mainmod, v, exec, bash -c \"cliphist list | rofi -dmenu | cliphist decode | wl-copy\""
       ]
       ++ (
         # workspaces

@@ -22,10 +22,14 @@
         extensions = [
           "miri"
           "rust-src"
+          "rustc-dev"
           "llvm-tools-preview"
           "rust-analyzer"
         ];
-        targets = [ "x86_64-unknown-none" ];
+        targets = [
+          "x86_64-unknown-none"
+          "x86_64-unknown-linux-gnu"
+        ];
       }
     ))
     gcc

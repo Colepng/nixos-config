@@ -50,6 +50,8 @@
     fsType = "ext4";
   };
 
+  zramSwap.enable = true;
+
   swapDevices = [
     { device = "/dev/disk/by-uuid/caddead6-7de2-4c0b-95c0-2844aee46019"; }
   ];

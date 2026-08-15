@@ -31,7 +31,7 @@
       viAlias = true;
       vimAlias = true;
       vimdiffAlias = true;
-    sideloadInitLua = false;
+      sideloadInitLua = false;
     };
 
     fish = {

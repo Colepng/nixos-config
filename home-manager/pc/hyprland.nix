@@ -222,7 +222,7 @@
       "$mainmod" = "super";
       "$altmod" = "alt";
       "$altmainmod" = "super + shift";
-      "$altaltmainmod" = "super + alt";
+      "$altaltmainmod" = "alt + shift";
 
       bindl = [
         "$mainmod, delete, exit"

@@ -4,8 +4,8 @@
   home-manager.users.cole = {
     wayland.windowManager.hyprland.settings = {
       monitor = [
-        "HDMI-A-1,1920x1080@120, 0x0, 1"
-        "HDMI-A-2,1680x1050@60, 1920x0, 1"
+        "DP-2,3840x2160@240, 0x0, 1.5, bitdepth, 10, cm, auto"
+        "HDMI-A-2,1680x1050@60, 2560x0, 1"
         # "eDP-2, disabled"
       ];
 
@@ -14,16 +14,16 @@
       # };
 
       workspace = [
-        "1, monitor:HDMI-A-1"
-        "2, monitor:HDMI-A-1"
-        "3, monitor:HDMI-A-1"
-        "4, monitor:HDMI-A-1"
-        "5, monitor:HDMI-A-1"
-        "6, monitor:HDMI-A-1"
-        "7, monitor:HDMI-A-1"
-        "8, monitor:HDMI-A-1"
-        "9, monitor:HDMI-A-1"
-        "10, monitor:HDMI-A-1"
+        "1, monitor:DP-2"
+        "2, monitor:DP-2"
+        "3, monitor:DP-2"
+        "4, monitor:DP-2"
+        "5, monitor:DP-2"
+        "6, monitor:DP-2"
+        "7, monitor:DP-2"
+        "8, monitor:DP-2"
+        "9, monitor:DP-2"
+        "10, monitor:DP-2"
         "11, monitor:HDMI-A-2"
         "12, monitor:HDMI-A-2"
         "13, monitor:HDMI-A-2"
@@ -70,6 +70,10 @@
           "quick,0.15,0,0.1,1"
         ];
       };
+
+      # experimental = {
+      #   xx_color_management_v4 = true;
+      # };
     };
   };
 }

@@ -114,7 +114,7 @@
             default = "";
           };
           persistent-workspaces = {
-            HDMI-A-1 = [
+            DP-2 = [
               1
               2
               3

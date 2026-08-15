@@ -14,6 +14,7 @@
     foot
     rnote
     kdePackages.ark
+    kdePackages.dolphin
     fastfetch
     ripgrep
     btop
@@ -24,7 +25,6 @@
     networkmanagerapplet
     crosspipe
     pwvucontrol
-    pcmanfm
     gitkraken
     nil
     kdePackages.qtdeclarative

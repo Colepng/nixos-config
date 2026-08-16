@@ -45,7 +45,7 @@
     };
   };
 
-  services.swww.enable = true;
+  services.awww.enable = true;
   services.cliphist = {
     enable = true;
     extraOptions = [

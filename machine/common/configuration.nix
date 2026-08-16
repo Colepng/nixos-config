@@ -73,7 +73,7 @@
       git
     ]
     ++ [
-      agenix.packages.${system}.default
+      agenix.packages.${stdenv.hostPlatform.system}.default
     ];
 
   nix.settings.trusted-users = [

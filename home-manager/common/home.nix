@@ -18,7 +18,7 @@
     fastfetch
     ripgrep
     btop
-    nixfmt-rfc-style
+    nixfmt
     krita
     vesktop
     kdePackages.filelight

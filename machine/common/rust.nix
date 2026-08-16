@@ -11,7 +11,8 @@
     rust-overlay.overlays.default
 
     (final: prev: {
-      neovim-unwrapped = inputs.nixpkgs-25.legacyPackages.${prev.system}.neovim-unwrapped;
+      neovim-unwrapped =
+        inputs.nixpkgs-25.legacyPackages.${prev.stdenv.hostPlatform.system}.neovim-unwrapped;
     })
 
   ];

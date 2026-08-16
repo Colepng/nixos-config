@@ -18,5 +18,9 @@
     virtualHosts."dawarich.colepng.com".extraConfig = ''
       reverse_proxy localhost:3000
     '';
+
+    virtualHosts."seerr.colepng.com".extraConfig = ''
+      reverse_proxy localhost:5055
+    '';
   };
 }

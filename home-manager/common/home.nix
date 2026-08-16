@@ -5,7 +5,7 @@
   home.username = "cole";
   home.homeDirectory = "/home/cole";
 
-  home.stateVersion = "25.11";
+  home.stateVersion = "26.05";
 
   # The home.packages option allows you to install Nix packages into your
   # environment.

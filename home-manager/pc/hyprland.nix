@@ -74,6 +74,7 @@
     package = null;
     portalPackage = null;
     enable = true;
+    configType = "hyprlang";
 
     plugins = lib.mkDefault [
     ];

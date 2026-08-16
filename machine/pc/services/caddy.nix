@@ -27,6 +27,10 @@
       reverse_proxy localhost:3000
     '';
 
+    virtualHosts."airtail.colepng.com".extraConfig = ''
+      reverse_proxy localhost:3001
+    '';
+
     virtualHosts."seerr.colepng.com".extraConfig = ''
       reverse_proxy localhost:5055
     '';

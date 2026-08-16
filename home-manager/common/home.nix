@@ -42,5 +42,6 @@
     spotify
     piper
     hyprshot
+    jellyfin-mpv-shim
   ];
 }

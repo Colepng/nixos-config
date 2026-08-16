@@ -1,5 +1,6 @@
 {
   imports = [
+    ./backups.nix
     ./caddy.nix
     ./dns.nix
     ./jellyfin.nix

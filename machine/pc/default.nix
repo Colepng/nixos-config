@@ -6,6 +6,7 @@
     ./hyprland.nix
     ./hardware.nix
     ./desktop.nix
+    ./secrets.nix
     ./services
   ];
 }

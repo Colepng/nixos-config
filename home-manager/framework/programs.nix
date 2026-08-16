@@ -46,7 +46,8 @@
     };
 
     niri.settings = {
-      input.tablet.map-to-output = "eDP-1";
+      input.tablet.enable = false;
+      input.touch.enable = false;
     };
 
     # systemd.user.services.niri-flake-pol kit.enable = false;

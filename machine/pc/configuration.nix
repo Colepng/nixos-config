@@ -24,6 +24,8 @@
     2283
   ];
 
+  networking.nameservers = [ "localhost:53" ];
+
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
 

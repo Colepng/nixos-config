@@ -51,6 +51,12 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+    };
   };
 
   outputs =
@@ -64,6 +70,7 @@
       caelestia-shell,
       nix-flatpak,
       vpn-confinement,
+      agenix,
       ...
     }:
     {
@@ -73,6 +80,7 @@
           specialArgs = {
             inherit rust-overlay;
             inherit inputs;
+            inherit agenix;
           };
           modules = [
             ./machine/pc
@@ -83,6 +91,7 @@
             spicetify-nix.nixosModules.spicetify
             nix-flatpak.nixosModules.nix-flatpak
             vpn-confinement.nixosModules.default
+            agenix.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

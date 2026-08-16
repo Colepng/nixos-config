@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  agenix,
   ...
 }:
 
@@ -64,11 +65,16 @@
 
   nix.settings.auto-optimise-store = true;
 
-  environment.systemPackages = with pkgs; [
-    gparted
-    texlive.combined.scheme-full
-    git
-  ];
+  environment.systemPackages =
+    with pkgs;
+    [
+      gparted
+      texlive.combined.scheme-full
+      git
+    ]
+    ++ [
+      agenix.packages.${system}.default
+    ];
 
   nix.settings.trusted-users = [
     "root"

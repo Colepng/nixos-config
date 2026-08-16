@@ -145,6 +145,7 @@
           specialArgs = {
             inherit rust-overlay;
             inherit inputs;
+            inherit agenix;
           };
           modules = [
             ./machine/framework
@@ -154,6 +155,7 @@
             home-manager.nixosModules.home-manager
             spicetify-nix.nixosModules.spicetify
             nix-flatpak.nixosModules.nix-flatpak
+            agenix.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

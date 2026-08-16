@@ -548,7 +548,8 @@
         "nixpkgs-25": "nixpkgs-25",
         "rust-overlay": "rust-overlay",
         "spicetify-nix": "spicetify-nix",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "vpn-confinement": "vpn-confinement"
       }
     },
     "rust-overlay": {
@@ -714,6 +715,21 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
+        "type": "github"
+      }
+    },
+    "vpn-confinement": {
+      "locked": {
+        "lastModified": 1785142579,
+        "narHash": "sha256-WEPxDMiKt3uGVVu/aorHnIgYYW62mEq2Q+rlN3qH6bg=",
+        "owner": "Maroka-chan",
+        "repo": "VPN-Confinement",
+        "rev": "b3aa71a7edfe6af748c23729d1bdec3b499741ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Maroka-chan",
+        "repo": "VPN-Confinement",
         "type": "github"
       }
     },

@@ -15,6 +15,14 @@
       reverse_proxy localhost:8096
     '';
 
+    virtualHosts."qbittorrent.colepng.com".extraConfig = ''
+      reverse_proxy localhost:8080
+    '';
+
+    virtualHosts."qbit.colepng.com".extraConfig = ''
+      reverse_proxy 192.168.15.1:8080
+    '';
+
     virtualHosts."dawarich.colepng.com".extraConfig = ''
       reverse_proxy localhost:3000
     '';

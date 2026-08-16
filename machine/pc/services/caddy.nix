@@ -31,6 +31,10 @@
       reverse_proxy localhost:3001
     '';
 
+    virtualHosts."taskchampion.colepng.com".extraConfig = ''
+      reverse_proxy localhost:8081
+    '';
+
     virtualHosts."seerr.colepng.com".extraConfig = ''
       reverse_proxy localhost:5055
     '';

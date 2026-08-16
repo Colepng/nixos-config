@@ -4,6 +4,7 @@
     ./caddy.nix
     ./dns.nix
     ./jellyfin.nix
+    ./taskchampion.nix
     ./torrenting.nix
   ];
 

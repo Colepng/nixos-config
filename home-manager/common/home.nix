@@ -42,6 +42,8 @@
     spotify
     piper
     hyprshot
+    taskwarrior-tui
+    taskwarrior3
     jellyfin-mpv-shim
   ];
 }

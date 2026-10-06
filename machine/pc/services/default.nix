@@ -3,6 +3,7 @@
     ./backups.nix
     ./caddy.nix
     ./dns.nix
+    ./hedgedoc.nix
     ./jellyfin.nix
     ./taskchampion.nix
     ./torrenting.nix

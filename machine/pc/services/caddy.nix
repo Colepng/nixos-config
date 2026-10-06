@@ -38,5 +38,9 @@
     virtualHosts."seerr.colepng.com".extraConfig = ''
       reverse_proxy localhost:5055
     '';
+
+    virtualHosts."hedgedoc.colepng.com".extraConfig = ''
+      reverse_proxy localhost:3002
+    '';
   };
 }

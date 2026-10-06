@@ -3,6 +3,26 @@
   services.caddy = {
     enable = true;
 
+    virtualHosts."shelfmark.colepng.com".extraConfig = ''
+      reverse_proxy localhost:8084
+    '';
+
+    virtualHosts."books.colepng.com".extraConfig = ''
+      reverse_proxy localhost:8083
+    '';
+
+    virtualHosts."sonarr.colepng.com".extraConfig = ''
+      reverse_proxy localhost:8989
+    '';
+
+    virtualHosts."radarr.colepng.com".extraConfig = ''
+      reverse_proxy 192.168.15.1:7878
+    '';
+
+    virtualHosts."prowlarr.colepng.com".extraConfig = ''
+      reverse_proxy 192.168.15.1:9696
+    '';
+
     virtualHosts."photos.colepng.com".extraConfig = ''
       reverse_proxy localhost:2283
     '';

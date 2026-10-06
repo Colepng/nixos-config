@@ -1,6 +1,7 @@
 {
   imports = [
     ./backups.nix
+    ./books.nix
     ./caddy.nix
     ./dns.nix
     ./hedgedoc.nix

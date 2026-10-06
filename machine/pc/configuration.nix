@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   ...
 }:
 
@@ -25,6 +26,13 @@
   ];
 
   networking.nameservers = [ "localhost:53" ];
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+    ];
+  };
 
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;

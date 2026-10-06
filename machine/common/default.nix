@@ -1,11 +1,12 @@
 {
   imports = [
-    ./desktop.nix
-    ./rust.nix
     ./configuration.nix
-    ./stylix.nix
+    ./desktop.nix
+    ./programs.nix
+    ./rust.nix
     ./secrets.nix
     ./services.nix
-    ./programs.nix
+    ./stylix.nix
+    ./taskwarrior.nix
   ];
 }

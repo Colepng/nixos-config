@@ -69,7 +69,6 @@
     with pkgs;
     [
       gparted
-      texlive.combined.scheme-full
       git
     ]
     ++ [

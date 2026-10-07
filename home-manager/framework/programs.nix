@@ -4,8 +4,6 @@
     dank-material-shell = {
       enable = true;
 
-      dgop.package = inputs.dgop.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
       systemd = {
         enable = true; # Systemd service for auto-start
         restartIfChanged = true; # Auto-restart dms.service when dank-material-shell changes
@@ -45,9 +43,13 @@
       };
     };
 
-    niri.settings = {
-      input.tablet.enable = false;
-      input.touch.enable = false;
+    niri = {
+      package = pkgs.niri;
+
+      settings = {
+        input.tablet.enable = false;
+        input.touch.enable = false;
+      };
     };
 
     # systemd.user.services.niri-flake-pol kit.enable = false;

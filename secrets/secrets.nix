@@ -5,4 +5,9 @@ let
 in
 {
   "restic.age".publicKeys = [ pc ];
+
+  "beszel.age".publicKeys = [
+    pc
+    framework
+  ];
 }

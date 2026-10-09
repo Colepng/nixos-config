@@ -1,5 +1,6 @@
 {
   imports = [
+    ./analytics.nix
     ./backups.nix
     ./books.nix
     ./caddy.nix

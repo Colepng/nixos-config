@@ -62,5 +62,9 @@
     virtualHosts."hedgedoc.colepng.com".extraConfig = ''
       reverse_proxy localhost:3002
     '';
+
+    virtualHosts."beszel.colepng.com".extraConfig = ''
+      reverse_proxy localhost:8090
+    '';
   };
 }

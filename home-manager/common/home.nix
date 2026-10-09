@@ -47,5 +47,6 @@
     jellyfin-mpv-shim
     gram
     jetbrains.idea
+    eddie
   ];
 }

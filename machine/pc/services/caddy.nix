@@ -12,7 +12,7 @@
     '';
 
     virtualHosts."sonarr.colepng.com".extraConfig = ''
-      reverse_proxy localhost:8989
+      reverse_proxy 192.168.15.1:8989
     '';
 
     virtualHosts."radarr.colepng.com".extraConfig = ''

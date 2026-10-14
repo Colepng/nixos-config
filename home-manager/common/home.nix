@@ -19,7 +19,6 @@
     ripgrep
     btop
     nixfmt
-    krita
     vesktop
     kdePackages.filelight
     networkmanagerapplet

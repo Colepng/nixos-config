@@ -22,8 +22,12 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "nct6687"
+    "i2c-dev"
+  ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.nct6687d ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5899c2ae-adca-40dd-918d-da7dba12b111";

@@ -33,5 +33,9 @@
     };
 
     nix-ld.enable = true;
+
+    coolercontrol = {
+      enable = true;
+    };
   };
 }

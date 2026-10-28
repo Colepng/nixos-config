@@ -37,6 +37,8 @@
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
 
+  boot.supportedFilesystems.exfat = true;
+
   virtualisation.docker = {
     enable = true;
   };

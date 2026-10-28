@@ -46,6 +46,7 @@
     jellyfin-mpv-shim
     gram
     jetbrains.idea
+    jetbrains.clion
     eddie
   ];
 }

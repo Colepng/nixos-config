@@ -48,5 +48,7 @@
     jetbrains.idea
     jetbrains.clion
     eddie
+    telegram-desktop
+    vscode
   ];
 }

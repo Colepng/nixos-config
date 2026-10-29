@@ -1,10 +1,16 @@
-{ lib, ... }:
+{
+  lib,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   users.groups.media = { };
 
   services = {
     qbittorrent = {
       enable = true;
+      package = inputs.nixpkgs-26.legacyPackages.${pkgs.stdenv.hostPlatform.system}.qbittorrent-nox;
       openFirewall = true;
       group = "media";
     };

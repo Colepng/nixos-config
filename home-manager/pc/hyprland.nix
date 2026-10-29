@@ -19,7 +19,6 @@
     wl-clipboard
     imagemagick
     syshud
-    squeekboard
   ];
 
   services.mako = {

@@ -1,10 +1,22 @@
-{ ... }:
+{ lib, ... }:
 {
   programs = {
     direnv = {
       enable = true;
       # enableFishIntegration = true;
       nix-direnv.enable = true;
+    };
+
+    foot = {
+      enable = true;
+      settings = lib.mkForce {
+        main = {
+          font = "MesloLGS Nerd Font:style=regular:size=14";
+        };
+        colors-dark = {
+          alpha = 0.7;
+        };
+      };
     };
 
     git = {

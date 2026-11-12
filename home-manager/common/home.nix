@@ -11,7 +11,6 @@
   # environment.
   home.packages = with pkgs; [
     neovim
-    foot
     rnote
     kdePackages.ark
     kdePackages.dolphin

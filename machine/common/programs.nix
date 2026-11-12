@@ -8,6 +8,12 @@
   programs = {
     fish.enable = true;
 
+    starship = {
+      enable = true;
+      enableFishIntegration = true;
+      presets = [ "gruvbox-rainbow" ];
+    };
+
     noisetorch.enable = true;
 
     steam = {

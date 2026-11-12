@@ -10,4 +10,6 @@ in
     pc
     framework
   ];
+
+  "cloudflare.age".publicKeys = [ pc ];
 }

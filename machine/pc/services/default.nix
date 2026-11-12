@@ -4,6 +4,7 @@
     ./backups.nix
     ./books.nix
     ./caddy.nix
+    ./cloudflare-dns.nix
     ./dns.nix
     ./hedgedoc.nix
     ./jellyfin.nix

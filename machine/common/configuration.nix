@@ -80,5 +80,10 @@
     "cole"
   ];
 
+  security.polkit = {
+    enable = true;
+    enablePkexecWrapper = true;
+  };
+
   system.stateVersion = "25.11";
 }

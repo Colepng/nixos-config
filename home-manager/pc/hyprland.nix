@@ -254,8 +254,6 @@
         "$mainmod, j, layoutmsg, togglesplit"
         "$mainmod, x, togglespecialworkspace"
 
-        "$mainmod, l, global, caelestia:lock"
-
         # window movment
         # move focus with mainmod + arrow keys,
         "$mainmod, a, movefocus, l"
@@ -297,14 +295,9 @@
           ) 9
         )
       )
-      ++ (
-        if config.programs.caelestia.enable then
-          [ "$mainmod, space, global, caelestia:launcher" ]
-        else
-          [
-            "$mainmod, space, exec, fuzzel"
-          ]
-      );
+      ++ ([
+        "$mainmod, space, exec, fuzzel"
+      ]);
 
       bindm = [
         "$mainmod, mouse:272, movewindow"

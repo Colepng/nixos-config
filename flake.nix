@@ -29,11 +29,6 @@
 
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
-    caelestia-shell = {
-      url = "github:caelestia-dots/shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,7 +63,6 @@
       rust-overlay,
       stylix,
       spicetify-nix,
-      caelestia-shell,
       nix-flatpak,
       vpn-confinement,
       agenix,
@@ -97,14 +91,12 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit caelestia-shell;
                 inherit inputs;
               };
 
               home-manager.users.cole.imports = [
                 ./home-manager/common
                 ./home-manager/pc
-                caelestia-shell.homeManagerModules.default
               ];
             }
           ];
@@ -127,14 +119,12 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit caelestia-shell;
                 inherit inputs;
               };
 
               home-manager.users.cole.imports = [
                 ./home-manager/common
                 ./home-manager/lenovo
-                caelestia-shell.homeManagerModules.default
               ];
             }
 
@@ -161,7 +151,6 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit caelestia-shell;
                 inherit inputs;
               };
 
@@ -171,7 +160,6 @@
                 inputs.niri.homeModules.niri
                 inputs.dms.homeModules.dank-material-shell
                 inputs.dms.homeModules.niri
-                caelestia-shell.homeManagerModules.default
               ];
             }
 

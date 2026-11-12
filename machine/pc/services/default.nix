@@ -5,6 +5,7 @@
     ./books.nix
     ./caddy.nix
     ./cloudflare-dns.nix
+    ./openrgb.nix
     ./dns.nix
     ./hedgedoc.nix
     ./jellyfin.nix

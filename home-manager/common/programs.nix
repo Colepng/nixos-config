@@ -1,6 +1,11 @@
 { lib, ... }:
 {
   programs = {
+    doom-emacs = {
+      enable = true;
+      # doomDir = "./doom";
+    };
+
     direnv = {
       enable = true;
       # enableFishIntegration = true;

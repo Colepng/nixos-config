@@ -53,6 +53,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.darwin.follows = "";
     };
+
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      inputs = {
+        nixpkgs.follows = "";
+      };
+    };
   };
 
   outputs =
@@ -66,6 +73,7 @@
       nix-flatpak,
       vpn-confinement,
       agenix,
+      nix-doom-emacs-unstraightened,
       ...
     }:
     {
@@ -97,6 +105,7 @@
               home-manager.users.cole.imports = [
                 ./home-manager/common
                 ./home-manager/pc
+                nix-doom-emacs-unstraightened.homeModule
               ];
             }
           ];
@@ -130,6 +139,7 @@
                 inputs.niri.homeModules.niri
                 inputs.dms.homeModules.dank-material-shell
                 inputs.dms.homeModules.niri
+                nix-doom-emacs-unstraightened.homeModule
               ];
             }
 

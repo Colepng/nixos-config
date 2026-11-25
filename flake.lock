@@ -512,6 +512,7 @@
         "nixpkgs-25": "nixpkgs-25",
         "nixpkgs-26": "nixpkgs-26",
         "rust-overlay": "rust-overlay",
+        "skwd-wall": "skwd-wall",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "vpn-confinement": "vpn-confinement"
@@ -534,6 +535,27 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "skwd-wall": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1792102657,
+        "narHash": "sha256-iXWuCKOidcaAEg6sbnJRGrNfEPjNkcDYmoiW+YJZ74g=",
+        "owner": "liixini",
+        "repo": "skwd-wall",
+        "rev": "3f80b1922aa6674065970dc6b78fc948960e84d5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "liixini",
+        "ref": "nix",
+        "repo": "skwd-wall",
         "type": "github"
       }
     },

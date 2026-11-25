@@ -44,6 +44,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    skwd-wall = {
+      url = "github:liixini/skwd-wall/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-flatpak.url = "github:gmodena/nix-flatpak";
 
     vpn-confinement.url = "github:Maroka-chan/VPN-Confinement";
@@ -66,6 +71,7 @@
       nix-flatpak,
       vpn-confinement,
       agenix,
+      skwd-wall,
       ...
     }:
     {
@@ -87,6 +93,7 @@
             nix-flatpak.nixosModules.nix-flatpak
             vpn-confinement.nixosModules.default
             agenix.nixosModules.default
+            skwd-wall.nixosModules.default
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

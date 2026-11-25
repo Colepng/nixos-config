@@ -47,15 +47,6 @@
 
     firefox.enable = true;
 
-    neovim = {
-      enable = false;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-      vimdiffAlias = true;
-      sideloadInitLua = false;
-    };
-
     fish = {
       enable = true;
       interactiveShellInit = ''

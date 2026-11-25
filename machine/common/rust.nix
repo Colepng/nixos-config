@@ -2,19 +2,12 @@
 {
   pkgs,
   rust-overlay,
-  inputs,
   ...
 }:
 
 {
   nixpkgs.overlays = [
     rust-overlay.overlays.default
-
-    (final: prev: {
-      neovim-unwrapped =
-        inputs.nixpkgs-25.legacyPackages.${prev.stdenv.hostPlatform.system}.neovim-unwrapped;
-    })
-
   ];
   environment.systemPackages = with pkgs; [
     (rust-bin.selectLatestNightlyWith (

@@ -10,7 +10,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    neovim
     rnote
     kdePackages.ark
     kdePackages.dolphin
@@ -50,8 +49,4 @@
     telegram-desktop
     vscode
   ];
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
 }

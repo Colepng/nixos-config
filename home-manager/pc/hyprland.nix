@@ -5,7 +5,53 @@
   pkgs,
   ...
 }:
+let
+  lua = lib.generators.mkLuaInline;
+  toLua = lib.generators.toLua { };
 
+  dsp = expr: lua "hl.dsp.${expr}";
+  exec = cmd: dsp "exec_cmd(${toLua cmd})";
+
+  bind = keys: action: {
+    _args = [
+      keys
+      action
+    ];
+  };
+  bindl = keys: action: {
+    _args = [
+      keys
+      action
+      { locked = true; }
+    ];
+  };
+  bindm = keys: action: {
+    _args = [
+      keys
+      action
+      { mouse = true; }
+    ];
+  };
+
+  mainMod = "SUPER";
+  altMod = "ALT";
+  altMainMod = "SUPER + SHIFT";
+  altAltMainMod = "ALT + SHIFT";
+
+  shot =
+    mode:
+    exec "hyprshot -z -o ~/Pictures/screenshots -f screenshot-$(date +%Y-%m-%d_%H-%M-%S).png -m ${mode}";
+
+  autostart = [
+    "swww restore"
+    "iio-hyprland --left-master"
+    "nm-applet"
+    "wl-paste --watch cliphist store"
+    "squeekboard"
+    "syshud"
+    "waybar"
+  ];
+in
 {
   # Pkgs used by hyprland or my hyprland config
   home.packages = with pkgs; [
@@ -73,236 +119,198 @@
     package = null;
     portalPackage = null;
     enable = true;
-    configType = "hyprlang";
-
-    plugins = lib.mkDefault [
-    ];
+    configType = "lua";
 
     settings = {
-      monitor = lib.mkDefault "eDP-1,preferred,auto,1.25";
-
-      exec-once = [
-        "swww restore"
-        "iio-hyprland --left-master"
-        "nm-applet"
-        "wl-paste --watch cliphist store"
-        "squeekboard"
-        "syshud"
-        "waybar"
+      monitor = lib.mkDefault [
+        {
+          output = "eDP-1";
+          mode = "preferred";
+          position = "auto";
+          scale = 1.25;
+        }
       ];
 
-      xwayland.force_zero_scaling = true;
-
-      general = {
-        resize_on_border = true;
-        # "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        # "col.inactive_border" = "rgba(595959aa)";
+      on = {
+        _args = [
+          "hyprland.start"
+          (lua "function()\n${lib.concatMapStrings (c: "  hl.exec_cmd(${toLua c})\n") autostart}end")
+        ];
       };
 
-      dwindle = {
-        preserve_split = true;
-      };
+      config = {
+        xwayland.force_zero_scaling = true;
 
-      decoration = {
-        rounding = 10;
-        rounding_power = 2;
-
-        shadow = {
-          enabled = true;
-          range = 4;
-          render_power = 3;
-          # color = "rgba(1a1a1aee)";
+        general = {
+          resize_on_border = true;
+          # col = {
+          #   active_border = { colors = [ "rgba(33ccffee)" "rgba(00ff99ee)" ]; angle = 45; };
+          #   inactive_border = "rgba(595959aa)";
+          # };
         };
 
-        blur = {
-          enabled = true;
-          size = 3;
-          passes = 1;
+        dwindle.preserve_split = true;
 
-          vibrancy = 0.1696;
+        decoration = {
+          rounding = 10;
+          rounding_power = 2;
+          shadow = {
+            enabled = true;
+            range = 4;
+            render_power = 3;
+            # color = "rgba(1a1a1aee)";
+          };
+          blur = {
+            enabled = true;
+            size = 3;
+            passes = 1;
+            vibrancy = 0.1696;
+          };
         };
-      };
 
-      animations = lib.mkDefault {
-        enabled = false;
-      };
+        animations.enabled = lib.mkDefault false;
 
-      misc = {
-        mouse_move_enables_dpms = true;
-        key_press_enables_dpms = true;
-      };
+        misc = {
+          mouse_move_enables_dpms = true;
+          key_press_enables_dpms = true;
+        };
 
-      input.touchpad.natural_scroll = true;
-      input.tablet.output = "eDP-1";
+        input.touchpad.natural_scroll = true;
+        input.tablet.output = "eDP-1";
 
-      gestures = {
-        workspace_swipe_cancel_ratio = 0.15;
+        gestures.workspace_swipe_cancel_ratio = 0.15;
       };
 
       gesture = {
-        "gesture" = "3, horizontal, workspace";
+        fingers = 3;
+        direction = "horizontal";
+        action = "workspace";
       };
 
-      windowrule = lib.mkDefault [
+      window_rule = lib.mkDefault [
         # ignore maximize requests from apps. you'll probably like this.
-        "suppress_event maximize, match:class .*"
+        {
+          name = "suppress-maximize";
+          match.class = ".*";
+          suppress_event = "maximize";
+        }
 
         # fix some dragging issues with xwayland
-        "no_focus 1, match:class ^$, match:title ^$, match:xwayland 1, match:float 1, match:fullscreen 0, match:pin 0"
+        {
+          name = "fix-xwayland-drags";
+          match = {
+            class = "^$";
+            title = "^$";
+            xwayland = true;
+            float = true;
+            fullscreen = false;
+            pin = false;
+          };
+          no_focus = true;
+        }
 
-        "workspace 11 silent, match:class spotify"
-        "workspace 14 silent, match:class discord"
-        "workspace 7 silent, match:class fastmail"
-        "match:class steam_app_2483190, float off"
-      ];
-
-      plugin.touch_gestures = {
-        # the default sensitivity is probably too low on tablet screens,
-        # i recommend turning it up to 4.0
-        sensitivity = 4.0;
-
-        # must be >= 3
-        workspace_swipe_fingers = 3;
-
-        # switching workspaces by swiping from an edge, this is separate from workspace_swipe_fingers
-        # and can be used at the same time
-        # possible values: l, r, u, or d
-        # to disable it set it to anything else
-        workspace_swipe_edge = "d";
-
-        # in milliseconds
-        long_press_delay = 400;
-
-        # resize windows by long-pressing on window borders and gaps.
-        # if general:resize_on_border is enabled, general:extend_border_grab_area is used for floating
-        # windows
-        resize_on_border_long_press = true;
-
-        # in pixels, the distance from the edge that is considered an edge
-        edge_margin = 10;
-
-        # emulates touchpad swipes when swiping in a direction that does not trigger workspace swipe.
-        # only triggers when finger count is equal to workspace_swipe_fingers
-        #
-        # might be removed in the future in favor of event hooks
-        emulate_touchpad_swipe = false;
-
-        experimental = {
-          # send proper cancel events to windows instead of hacky touch_up events,
-          # not recommended as it crashed a few times, once it's stabilized i'll make it the default
-          send_cancel = 0;
-        };
-
-        hyprgrass-bind = [
-          # swipe left from right edge
-          " , edge:r:l, workspace, m+1"
-          # swipe left from right edge
-          " , edge:l:r, workspace, m-1"
-
-          # # swipe up from bottom edge
-          # ", edge:d:u, exec, busctl call --user sm.puri.osk0 /sm/puri/osk0 sm.puri.osk0 setvisible b true"
-          # swipe down from right edge
-          ", edge:r:d, exec, busctl call --user sm.puri.osk0 /sm/puri/osk0 sm.puri.osk0 setvisible b true"
-
-          ", edge:u:d, exec, nwg-drawer"
-
-          # swipe down with 4 fingers
-          ", swipe:3:u, killactive"
-
-          ", edge:u:r, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-\"$(date +%f-%x)\".png -m region"
-        ];
-
-        hyprgrass-bindm = [
-          # longpress can trigger mouse binds:
-          # " , longpress:2, movewindow"
-          # " , longpress:3, resizewindow"
-        ];
-      };
-
-      "$mainmod" = "super";
-      "$altmod" = "alt";
-      "$altmainmod" = "super + shift";
-      "$altaltmainmod" = "alt + shift";
-
-      bindl = [
-        "$mainmod, delete, exit"
-
-        # audio keys
-        ",xf86audioraisevolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-        ",xf86audiolowervolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ",xf86audiomute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        # ",xf86audiomutemic, exec, wpctl set-mute -l 1 @DEFAULT_AUDIO_SINK@ toggle"
-
-        # brightness keys
-        ",xf86monbrightnessup, exec, brightnessctl -e4 -n2 set 5%+"
-        ",xf86monbrightnessdown, exec, brightnessctl -e4 -n2 set 5%-"
-
-        # media control keys
-        ",xf86audionext, exec, playerctl next"
-        ",xf86audiopause, exec, playerctl play-pause"
-        ",xf86audioplay, exec, playerctl play-pause"
-        ",xf86audioprev, exec, playerctl previous"
+        {
+          name = "spotify-ws";
+          match.class = "spotify";
+          workspace = "11 silent";
+        }
+        {
+          name = "discord-ws";
+          match.class = "discord";
+          workspace = "13 silent";
+        }
+        {
+          name = "discord-ws";
+          match.class = "vesktop";
+          workspace = "13 silent";
+        }
+        {
+          name = "fastmail-ws";
+          match.class = "fastmail";
+          workspace = "7 silent";
+        }
+        {
+          name = "steam-2483190-tile";
+          match.class = "steam_app_2483190";
+          float = false;
+        }
       ];
 
       bind = [
+        # bindl
+        (bindl "${mainMod} + Delete" (dsp "exit()"))
+
+        # audio keys
+        (bindl "XF86AudioRaiseVolume" (exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"))
+        (bindl "XF86AudioLowerVolume" (exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"))
+        (bindl "XF86AudioMute" (exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+
+        # brightness keys
+        (bindl "XF86MonBrightnessUp" (exec "brightnessctl -e4 -n2 set 5%+"))
+        (bindl "XF86MonBrightnessDown" (exec "brightnessctl -e4 -n2 set 5%-"))
+
+        # media control keys
+        (bindl "XF86AudioNext" (exec "playerctl next"))
+        (bindl "XF86AudioPause" (exec "playerctl play-pause"))
+        (bindl "XF86AudioPlay" (exec "playerctl play-pause"))
+        (bindl "XF86AudioPrev" (exec "playerctl previous"))
+
         # hyprland interaction
-        "$mainmod, q, killactive"
-        "$mainmod, f, togglefloating"
-        "$mainmod, m, fullscreen"
-        "$altmainmod, m, fullscreen, 1"
-        "$mainmod shift, p, pin"
-        "$mainmod, j, layoutmsg, togglesplit"
-        "$mainmod, x, togglespecialworkspace"
-
-        # window movment
-        # move focus with mainmod + arrow keys,
-        "$mainmod, a, movefocus, l"
-        "$mainmod, d, movefocus, r"
-        "$mainmod, w, movefocus, u"
-        "$mainmod, s, movefocus, d"
-
-        "$altmod, a, swapwindow, l"
-        "$altmod, d, swapwindow, r"
-        "$altmod, w, swapwindow, u"
-        "$altmod, s, swapwindow, d"
+        (bind "${mainMod} + Q" (dsp "window.close()"))
+        (bind "${mainMod} + F" (dsp ''window.float({ action = "toggle" })''))
+        (bind "${mainMod} + M" (dsp "window.fullscreen()"))
+        (bind "${altMainMod} + M" (dsp ''window.fullscreen({ mode = "maximized" })''))
+        # SUPER+SHIFT+P was bound twice (pin + hyprshot window); pin disabled
+        # (bind "${mainMod} + SHIFT + P" (dsp "window.pin()"))
+        (bind "${mainMod} + J" (dsp ''layout("togglesplit")''))
+        (bind "${mainMod} + X" (dsp "workspace.toggle_special()"))
 
         # apps
-        "$mainmod, return, exec, foot"
-        "$altmod, c, exec, firefox --new-tab \"https://app.fastmail.com/calendar/week/\""
-        "$altmod, m, exec, firefox --new-tab \"https://app.fastmail.com/mail/inbox\""
+        (bind "${mainMod} + Return" (exec "foot"))
+        (bind "${altMod} + C" (exec ''firefox --new-tab "https://app.fastmail.com/calendar/week/"''))
+        (bind "${altMod} + M" (exec ''firefox --new-tab "https://app.fastmail.com/mail/inbox"''))
+        (bind "${mainMod} + Space" (exec "fuzzel"))
 
         # utils
-        "$mainmod, p, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-$(date +%Y-%m-%d_%H-%M-%S).png -m region"
-        "$altmainmod, p, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-$(date +%Y-%m-%d_%H-%M-%S).png -m window"
-        "$altmod, p, exec, hyprshot -z -o ~/pictures/screenshots -f screenshot-$(date +%Y-%m-%d_%H-%M-%S).png -m output"
-        "$mainmod, v, exec, bash -c \"cliphist list | rofi -dmenu | cliphist decode | wl-copy\""
-      ]
-      ++ (
-        # workspaces
-        # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-        builtins.concatLists (
-          builtins.genList (
-            i:
-            let
-              ws = i + 1;
-            in
-            [
-              "$mainmod, code:1${toString i}, workspace, ${toString ws}"
-              "$altmainmod, code:1${toString i}, movetoworkspace, ${toString ws}"
-              "$altmod, code:1${toString i}, workspace, ${toString (ws + 10)}"
-              "$altaltmainmod, code:1${toString i}, movetoworkspace, ${toString (ws + 10)}"
-            ]
-          ) 9
-        )
-      )
-      ++ ([
-        "$mainmod, space, exec, fuzzel"
-      ]);
+        (bind "${mainMod} + P" (shot "region"))
+        (bind "${altMainMod} + P" (shot "window"))
+        (bind "${altMod} + P" (shot "output"))
+        (bind "${mainMod} + V" (exec ''bash -c "cliphist list | rofi -dmenu | cliphist decode | wl-copy"''))
 
-      bindm = [
-        "$mainmod, mouse:272, movewindow"
-        "$mainmod, mouse:273, resizewindow"
-      ];
+        # mouse
+        (bindm "${mainMod} + mouse:272" (dsp "window.drag()"))
+        (bindm "${mainMod} + mouse:273" (dsp "window.resize()"))
+      ]
+      # focus / swap
+      ++ lib.concatLists (
+        lib.mapAttrsToList
+          (key: dir: [
+            (bind "${mainMod} + ${key}" (dsp ''focus({ direction = "${dir}" })''))
+            (bind "${altMod} + ${key}" (dsp ''window.swap({ direction = "${dir}" })''))
+          ])
+          {
+            A = "left";
+            D = "right";
+            W = "up";
+            S = "down";
+          }
+      )
+      # workspaces: $mod + [shift +] {1..9} to [move to] workspace {1..9}, ALT layer -> 11..19
+      ++ lib.concatLists (
+        lib.genList (
+          i:
+          let
+            ws = i + 1;
+            key = "code:1${toString i}";
+          in
+          [
+            (bind "${mainMod} + ${key}" (dsp "focus({ workspace = ${toString ws} })"))
+            (bind "${altMainMod} + ${key}" (dsp "window.move({ workspace = ${toString ws} })"))
+            (bind "${altMod} + ${key}" (dsp "focus({ workspace = ${toString (ws + 10)} })"))
+            (bind "${altAltMainMod} + ${key}" (dsp "window.move({ workspace = ${toString (ws + 10)} })"))
+          ]
+        ) 9
+      );
     };
   };
 

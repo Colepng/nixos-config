@@ -151,6 +151,7 @@
 
         "workspace 11 silent, match:class spotify"
         "workspace 14 silent, match:class discord"
+        "workspace 14 silent, match:class vesktop"
         "workspace 7 silent, match:class fastmail"
         "match:class steam_app_2483190, float off"
       ];

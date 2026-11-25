@@ -84,6 +84,7 @@
             inherit rust-overlay;
             inherit inputs;
             inherit agenix;
+            inherit nix-doom-emacs-unstraightened;
           };
           modules = [
             ./machine/pc
@@ -131,6 +132,7 @@
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
                 inherit inputs;
+                inherit nix-doom-emacs-unstraightened;
               };
 
               home-manager.users.cole.imports = [

@@ -3,7 +3,7 @@
   programs = {
     doom-emacs = {
       enable = true;
-      # doomDir = "./doom";
+      doomDir = ../../doom;
     };
 
     direnv = {

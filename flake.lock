@@ -477,22 +477,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-25": {
-      "locked": {
-        "lastModified": 1782847189,
-        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-25.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-26": {
       "locked": {
         "lastModified": 1795370043,
@@ -604,7 +588,6 @@
         "nix-proton-cachyos": "nix-proton-cachyos",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-25": "nixpkgs-25",
         "nixpkgs-26": "nixpkgs-26",
         "rust-overlay": "rust-overlay",
         "spicetify-nix": "spicetify-nix",

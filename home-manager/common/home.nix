@@ -35,7 +35,6 @@
     evince
     nvtopPackages.intel
     linuxKernel.packages.linux_zen.cpupower
-    onlyoffice-desktopeditors
     hunspell
     hunspellDicts.en_CA
     gnome-software
@@ -46,9 +45,7 @@
     taskwarrior-tui
     taskwarrior3
     jellyfin-mpv-shim
-    gram
     jetbrains.idea
-    jetbrains.clion
     eddie
     telegram-desktop
     vscode

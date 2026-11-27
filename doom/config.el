@@ -80,5 +80,8 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+
+;; use the fullpath of the user on the target, useful for windows
 (after! tramp
-  (add-to-list 'tramp-remote-path 'tramp-own-remote-path)) ;; use full path sshing with path, useful for targetting windows
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))

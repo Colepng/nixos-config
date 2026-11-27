@@ -49,5 +49,6 @@
     eddie
     telegram-desktop
     vscode
+    clang-tools
   ];
 }
